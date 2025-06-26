@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikola Tesla: The Master of Lightning</title>
+    <!-- Tailwind CSS CDN for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter for a clean, modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles and custom animations/transitions */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5; /* Light gray background */
+            line-height: 1.6;
+            color: #333; /* Dark gray text */
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e0e0e0;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Keyframe animation for header entry */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Keyframe animation for image entry */
+        @keyframes fadeInRotate {
+            from {
+                opacity: 0;
+                transform: rotateY(90deg) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: rotateY(0deg) scale(1);
+            }
+        }
+
+        /* Keyframe animation for section content entry */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Apply header animation */
+        header h1 {
+            animation: fadeInDown 1s ease-out forwards;
+        }
+
+        /* Apply image animation */
+        #tesla-image {
+            animation: fadeInRotate 1.5s ease-out forwards;
+            animation-delay: 0.5s; /* Delay image animation */
+            opacity: 0; /* Start hidden */
+        }
+
+        /* Apply section content animation */
+        section {
+            animation: slideInUp 0.8s ease-out forwards;
+            opacity: 0; /* Start hidden */
+            margin-bottom: 2rem; /* Spacing between sections */
+        }
+
+        /* Delay successive sections for a staggered effect */
+        section:nth-of-type(1) { animation-delay: 1.0s; }
+        section:nth-of-type(2) { animation-delay: 1.2s; }
+        section:nth-of-type(3) { animation-delay: 1.4s; }
+        section:nth-of-type(4) { animation-delay: 1.6s; }
+
+        /* General card styling with transitions */
+        .card {
+            background-color: #ffffff;
+            border-radius: 1rem; /* More rounded corners */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Deeper shadow */
+            padding: 2.5rem; /* More padding */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition */
+        }
+
+        /* Hover effect for cards */
+        .card:hover {
+            transform: translateY(-8px); /* Lift effect on hover */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15); /* Even deeper shadow on hover */
+        }
+
+        /* Button styling with gradient and hover effect */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            background: linear-gradient(135deg, #4CAF50 0%, #2196F3 100%); /* Green-blue gradient, often associated with innovation */
+            color: #ffffff;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out; /* Smooth transitions for all properties */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Button shadow */
+        }
+
+        /* Button hover effect */
+        .btn:hover {
+            transform: translateY(-3px); /* Slight lift */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+            background: linear-gradient(135deg, #2196F3 0%, #4CAF50 100%); /* Reverse gradient */
+        }
+
+        /* Link hover effect */
+        a {
+            color: #2196F3; /* Blue link color */
+            text-decoration: none;
+            transition: color 0.2s ease-in-out, text-decoration 0.2s ease-in-out;
+        }
+
+        a:hover {
+            color: #1976D2; /* Darker blue on hover */
+            text-decoration: underline;
+        }
+
+        /* Responsive typography adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem; /* Smaller heading on mobile */
+            }
+            h2 {
+                font-size: 2rem; /* Smaller subheadings */
+            }
+            .card {
+                padding: 1.5rem; /* Less padding on mobile */
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.75rem;
+            }
+            .card {
+                padding: 1rem;
+                margin: 0 1rem; /* Add horizontal margin to cards */
+            }
+        }
+
+        /* Utility classes for layout using Tailwind, for example: */
+        .max-w-4xl { max-width: 80rem; } /* Customizing max width for content */
+        .mx-auto { margin-left: auto; margin-right: auto; } /* Centering content */
+        .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+    </style>
+</head>
+<body>
+    <header class="bg-gradient-to-r from-teal-600 to-blue-800 text-white py-12 shadow-lg rounded-b-3xl">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-4 animate__animated animate__fadeInDown">
+                Nikola Tesla: The Visionary of the Electrical Age
+            </h1>
+            <p class="text-xl md:text-2xl font-light opacity-90">
+                "The present is theirs; the future, for which I have really worked, is mine."
+            </p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12 md:px-8 lg:px-12">
+        <!-- Biography Section -->
+        <section class="mb-12 card opacity-0">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/3 flex justify-center">
+                    <img id="tesla-image"
+                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Tesla_circa_1890.jpeg/250px-Tesla_circa_1890.jpeg"
+                         alt="Nikola Tesla"
+                         class="w-64 h-64 rounded-full object-cover shadow-xl border-4 border-blue-300 transform transition-transform duration-300 hover:scale-105"
+                         onerror="this.onerror=null;this.src='https://placehold.co/256x256/aaccff/000000?text=Nikola+Tesla+Image';">
+                </div>
+                <div class="md:w-2/3">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2">
+                        Biography & Early Life
+                    </h2>
+                    <p class="text-lg mb-4">
+                        Born on <strong class="text-indigo-600">July 10, 1856</strong>, in Smiljan, Austrian Empire (modern-day Croatia), Nikola Tesla would become one of history's most brilliant and eccentric inventors. His father, Milutin Tesla, was an Eastern Orthodox priest, and his mother, Đuka Mandić, was an inventor of household appliances. From his mother, Tesla inherited his inventive spirit and photographic memory.
+                    </p>
+                    <p class="text-lg mb-4">
+                        Tesla displayed an extraordinary mind from a young age, with a knack for mathematics and a vivid imagination. He attended the Imperial-Royal Technical College in Graz, Austria, where he studied electrical engineering. It was there that he first conceived the idea for the alternating current (AC) motor. He later studied at the University of Prague.
+                    </p>
+                    <p class="text-lg mb-4">
+                        After working in Budapest and Paris, where he improved electrical equipment, Tesla emigrated to the United States in <strong class="text-green-600">1884</strong>, arriving in New York City with little more than the clothes on his back and a letter of recommendation to Thomas Edison. Their initial collaboration soon turned into a fierce rivalry over the future of electrical power.
+                    </p>
+                    <p class="text-lg">
+                        Nikola Tesla <strong class="text-red-600">died on January 7, 1943</strong>, alone in a New York City hotel room, having lived a life dedicated to scientific discovery and invention, much of which was ahead of its time.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scientific Career Section -->
+        <section class="mb-12 card opacity-0">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2">
+                Revolutionary Scientific Career
+            </h2>
+            <p class="text-lg mb-4">
+                Tesla's career was marked by groundbreaking inventions and visionary concepts, particularly in the field of electricity and magnetism. His most significant contributions include:
+            </p>
+            <ul class="list-disc list-inside text-lg space-y-2 mb-4 pl-4">
+                <li>
+                    <strong>Alternating Current (AC) System:</strong> Tesla's development of the AC electrical system, including the induction motor and polyphase power distribution, was crucial to the "War of Currents" against Edison's direct current (DC). His system ultimately became the global standard for power transmission.
+                </li>
+                <li>
+                    <strong>Tesla Coil:</strong> Invented in <strong class="text-yellow-600">1891</strong>, the Tesla coil is a resonant transformer circuit that produces high-voltage, low-current, high-frequency alternating-current electricity. It was used for innovative experiments in electrical lighting, phosphorescence, X-ray generation, and radio.
+                </li>
+                <li>
+                    <strong>Radio Technology:</strong> Though Marconi is often credited, Tesla's patents for radio communication predate Marconi's. He demonstrated wireless control of a boat in <strong class="text-purple-600">1898</strong>, proving the principles of radio.
+                </li>
+                <li>
+                    <strong>Remote Control:</strong> His wirelessly controlled boat demonstration also laid the foundation for remote control technology.
+                </li>
+                <li>
+                    <strong>X-rays and Radioactivity:</strong> Tesla conducted early experiments with X-rays, recognizing their potential dangers, and was aware of phenomena related to radioactivity.
+                </li>
+            </ul>
+            <p class="text-lg mb-4">
+                Tesla dreamed of free, wireless energy for the world, leading to his ambitious but unfinished project, the Wardenclyffe Tower, designed for transatlantic wireless telephony and broadcasting. His visionary ideas often outpaced the technological capabilities and financial backing of his time.
+            </p>
+            <p class="text-lg">
+                Despite facing financial difficulties and public skepticism later in his life, Tesla's work laid the essential foundation for modern electrical power systems and many wireless technologies we use today.
+            </p>
+        </section>
+
+        <!-- Unknown Facts Section -->
+        <section class="mb-12 card opacity-0">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2">
+                Lesser-Known Facts & Quirks
+            </h2>
+            <ul class="list-disc list-inside text-lg space-y-3 pl-4">
+                <li>
+                    <strong>Photographic Memory & Visualization:</strong> Tesla possessed an eidetic memory, allowing him to memorize entire books and visualize complex inventions in his mind with extreme clarity, often building them without ever drawing schematics.
+                </li>
+                <li>
+                    <strong>Obsessive Compulsive Tendencies:</strong> He had several phobias and obsessions, including a strong aversion to pearls (which led him to send an assistant home for wearing them) and a compulsion to do things in multiples of three.
+                </li>
+                <li>
+                    <strong>Fascination with Pigeons:</strong> In his later years, Tesla developed an unusual devotion to pigeons, particularly a white pigeon he claimed to love as one would a human being.
+                </li>
+                <li>
+                    <strong>Never Married:</strong> Tesla never married, believing that abstinence from sexual relations helped his scientific work, though he did believe in love.
+                </li>
+                <li>
+                    <strong>"Death Ray" Rumors:</strong> Towards the end of his life, he claimed to have invented a "teleforce weapon," or "death ray," though no evidence of such a device was ever found.
+                </li>
+                <li>
+                    <strong>Fluency in Multiple Languages:</strong> In addition to his native Serbo-Croatian, Tesla was fluent in Czech, English, French, German, Hungarian, Italian, and Latin.
+                </li>
+            </ul>
+        </section>
+
+        <!-- Legacy Section (brief) -->
+        <section class="mb-12 card opacity-0">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2">
+                Enduring Legacy
+            </h2>
+            <p class="text-lg mb-4">
+                Nikola Tesla's vision and inventions fundamentally shaped the modern world. His alternating current system powers our homes and industries, and his pioneering work in radio, remote control, and wireless communication paved the way for countless technologies we now take for granted. Though he faced challenges and obscurity during his lifetime, Tesla is now widely recognized as a true genius whose contributions continue to inspire innovation and wonder.
+            </p>
+            <div class="text-center mt-8">
+                <a href="https://en.wikipedia.org/wiki/Nikola_Tesla" target="_blank" rel="noopener noreferrer" class="btn">
+                    Explore More on Wikipedia
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 text-center mt-12 rounded-t-3xl">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2024 Nikola Tesla Tribute. All rights reserved. Content based on publicly available information.</p>
+        </div>
+    </footer>
+</body>
+</html>

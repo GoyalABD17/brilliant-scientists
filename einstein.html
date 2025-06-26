@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albert Einstein: A Life of Genius</title>
+    <!-- Tailwind CSS CDN for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter for a clean, modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles and custom animations/transitions */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5; /* Light gray background */
+            line-height: 1.6;
+            color: #333; /* Dark gray text */
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e0e0e0;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Keyframe animation for header entry */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Keyframe animation for image entry */
+        @keyframes fadeInRotate {
+            from {
+                opacity: 0;
+                transform: rotateY(90deg) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: rotateY(0deg) scale(1);
+            }
+        }
+
+        /* Keyframe animation for section content entry */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Apply header animation */
+        header h1 {
+            animation: fadeInDown 1s ease-out forwards;
+        }
+
+        /* Apply image animation */
+        #einstein-image {
+            animation: fadeInRotate 1.5s ease-out forwards;
+            animation-delay: 0.5s; /* Delay image animation */
+            opacity: 0; /* Start hidden */
+        }
+
+        /* Apply section content animation */
+        section {
+            animation: slideInUp 0.8s ease-out forwards;
+            opacity: 0; /* Start hidden */
+            margin-bottom: 2rem; /* Spacing between sections */
+        }
+
+        /* Delay successive sections for a staggered effect */
+        section:nth-of-type(1) { animation-delay: 1.0s; }
+        section:nth-of-type(2) { animation-delay: 1.2s; }
+        section:nth-of-type(3) { animation-delay: 1.4s; }
+        section:nth-of-type(4) { animation-delay: 1.6s; }
+
+        /* General card styling with transitions */
+        .card {
+            background-color: #ffffff;
+            border-radius: 1rem; /* More rounded corners */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Deeper shadow */
+            padding: 2.5rem; /* More padding */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition */
+        }
+
+        /* Hover effect for cards */
+        .card:hover {
+            transform: translateY(-8px); /* Lift effect on hover */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15); /* Even deeper shadow on hover */
+        }
+
+        /* Button styling with gradient and hover effect */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Purple-blue gradient */
+            color: #ffffff;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out; /* Smooth transitions for all properties */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Button shadow */
+        }
+
+        /* Button hover effect */
+        .btn:hover {
+            transform: translateY(-3px); /* Slight lift */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%); /* Reverse gradient */
+        }
+
+        /* Link hover effect */
+        a {
+            color: #4a90e2; /* Blue link color */
+            text-decoration: none;
+            transition: color 0.2s ease-in-out, text-decoration 0.2s ease-in-out;
+        }
+
+        a:hover {
+            color: #357bd8; /* Darker blue on hover */
+            text-decoration: underline;
+        }
+
+        /* Responsive typography adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem; /* Smaller heading on mobile */
+            }
+            h2 {
+                font-size: 2rem; /* Smaller subheadings */
+            }
+            .card {
+                padding: 1.5rem; /* Less padding on mobile */
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.75rem;
+            }
+            .card {
+                padding: 1rem;
+                margin: 0 1rem; /* Add horizontal margin to cards */
+            }
+        }
+
+        /* Utility classes for layout using Tailwind, for example: */
+        .max-w-4xl { max-width: 80rem; } /* Customizing max width for content */
+        .mx-auto { margin-left: auto; margin-right: auto; } /* Centering content */
+        .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+    </style>
+</head>
+<body>
+    <header class="bg-gradient-to-r from-blue-600 to-indigo-800 text-white py-12 shadow-lg rounded-b-3xl">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-4 animate__animated animate__fadeInDown">
+                Albert Einstein: The Mind That Changed the World
+            </h1>
+            <p class="text-xl md:text-2xl font-light opacity-90">
+                "Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world, stimulating progress, giving birth to evolution."
+            </p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12 md:px-8 lg:px-12">
+        <!-- Biography Section -->
+        <section class="mb-12 card opacity-0">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/3 flex justify-center">
+                    <img id="einstein-image"
+                         src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Albert_Einstein_Head.jpg"
+                         alt="Albert Einstein"
+                         class="w-64 h-64 rounded-full object-cover shadow-xl border-4 border-indigo-300 transform transition-transform duration-300 hover:scale-105"
+                         onerror="this.onerror=null;this.src='https://placehold.co/256x256/aabbcc/ffffff?text=Einstein+Image';">
+                </div>
+                <div class="md:w-2/3">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2">
+                        Biography & Early Life
+                    </h2>
+                    <p class="text-lg mb-4">
+                        Born on <strong class="text-indigo-600">March 14, 1879</strong>, in Ulm, Württemberg, Germany, Albert Einstein would grow to become one of the most influential physicists of all time. His parents were Hermann Einstein, a salesman and engineer, and Pauline Koch. The family moved to Munich when Albert was an infant, where his father and his uncle founded an electrical engineering company.
+                    </p>
+                    <p class="text-lg mb-4">
+                        Einstein's early education was somewhat unconventional. He was a slow speaker as a child, leading his parents to worry, but he showed a profound curiosity and a deep interest in understanding the natural world from an early age. He famously rejected rote learning and authoritative teaching methods, preferring to explore concepts independently.
+                    </p>
+                    <p class="text-lg mb-4">
+                        He struggled with the rigid schooling system in Germany. At the age of 15, he dropped out of school in Munich and later attempted to enter the Swiss Federal Polytechnic in Zurich (ETH Zurich) but failed the entrance exam. After attending a secondary school in Aarau, Switzerland, for a year, he finally gained admission to ETH Zurich in 1896, where he trained as a teacher of physics and mathematics.
+                    </p>
+                    <p class="text-lg">
+                        Albert Einstein <strong class="text-red-600">died on April 18, 1955</strong>, in Princeton, New Jersey, United States, leaving behind a legacy that continues to shape our understanding of the universe.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scientific Career Section -->
+        <section class="mb-12 card opacity-0">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2">
+                Revolutionary Scientific Career
+            </h2>
+            <p class="text-lg mb-4">
+                Einstein's most productive period, often referred to as his "Annus Mirabilis" (Miracle Year), was in <strong class="text-green-600">1905</strong>. While working as a patent clerk in Bern, Switzerland, he published four groundbreaking papers that fundamentally changed physics:
+            </p>
+            <ul class="list-disc list-inside text-lg space-y-2 mb-4 pl-4">
+                <li>
+                    <strong>The Photoelectric Effect:</strong> This paper explained the emission of electrons from a material when light shines on it, proposing that light consists of discrete energy quanta (photons). For this work, he received the <strong class="text-yellow-600">Nobel Prize in Physics in 1921</strong>.
+                </li>
+                <li>
+                    <strong>Brownian Motion:</strong> He provided a theoretical explanation for the seemingly random movement of particles in a fluid, confirming the existence of atoms and molecules.
+                </li>
+                <li>
+                    <strong>Special Relativity:</strong> This theory introduced the concepts of time dilation and length contraction, establishing that the laws of physics are the same for all non-accelerating observers and that the speed of light in a vacuum is independent of the motion of all observers. It gave us the famous equation, $E=mc^2$.
+                </li>
+                <li>
+                    <strong>Mass-Energy Equivalence ($E=mc^2$):</strong> As a consequence of special relativity, this paper demonstrated that mass and energy are interconvertible, meaning a small amount of mass can be converted into a vast amount of energy.
+                </li>
+            </ul>
+            <p class="text-lg mb-4">
+                In <strong class="text-green-600">1915</strong>, Einstein completed his <strong class="text-purple-600">General Theory of Relativity</strong>, which extended special relativity to include gravity. This theory describes gravity not as a force, but as a curvature of spacetime caused by the presence of mass and energy. It predicted phenomena like black holes and gravitational lensing, which have since been experimentally confirmed.
+            </p>
+            <p class="text-lg">
+                Throughout his career, Einstein continued to work on quantum mechanics and unified field theory, seeking to combine all fundamental forces of nature into a single comprehensive theory, though he never fully succeeded in this endeavor. His work profoundly influenced not only physics but also philosophy and our understanding of the cosmos.
+            </p>
+        </section>
+
+        <!-- Unknown Facts Section -->
+        <section class="mb-12 card opacity-0">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2">
+                Lesser-Known Facts
+            </h2>
+            <ul class="list-disc list-inside text-lg space-y-3 pl-4">
+                <li>
+                    <strong>He played the violin:</strong> Music was an integral part of Einstein's life. He started playing the violin at age six and continued throughout his life, finding solace and inspiration in it. He once said, "I often think in music. I live my daydreams in music. I see my life in terms of music."
+                </li>
+                <li>
+                    <strong>He was offered the presidency of Israel:</strong> In 1952, Einstein was offered the second presidency of Israel, a ceremonial role, but he declined, stating he lacked the "natural aptitude" and experience for such a position.
+                </li>
+                <li>
+                    <strong>His brain was preserved:</strong> After his death, without his family's permission, pathologist Thomas Harvey removed Einstein's brain during his autopsy. Harvey preserved it for scientific study, and it was later sectioned and sent to various researchers.
+                </li>
+                <li>
+                    <strong>He had an illegitimate daughter:</strong> Before his marriage to Mileva Marić, Einstein had a daughter named Lieserl, born in 1902. Her fate is largely unknown; she is believed to have either died in infancy or been given up for adoption.
+                </li>
+                <li>
+                    <strong>He loved sailing but wasn't a good swimmer:</strong> Einstein enjoyed sailing, which he found relaxing. However, despite his love for the water, he never learned to swim.
+                </li>
+                <li>
+                    <strong>He helped invent the refrigerator:</strong> In the late 1920s, Einstein and his former student Leó Szilárd patented a design for a unique, absorption-style refrigerator. It used a different method of cooling and was designed to be more environmentally friendly and reliable.
+                </li>
+            </ul>
+        </section>
+
+        <!-- Legacy Section (brief) -->
+        <section class="mb-12 card opacity-0">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2">
+                Enduring Legacy
+            </h2>
+            <p class="text-lg mb-4">
+                Albert Einstein's impact on science and humanity is immeasurable. His theories revolutionized physics, laying the groundwork for many technological advancements and our current understanding of the cosmos. Beyond his scientific contributions, Einstein was a vocal advocate for peace, civil rights, and disarmament, using his fame to promote humanitarian causes. His image has become synonymous with genius, and his quotes continue to inspire generations.
+            </p>
+            <div class="text-center mt-8">
+                <a href="https://en.wikipedia.org/wiki/Albert_Einstein" target="_blank" rel="noopener noreferrer" class="btn">
+                    Learn More on Wikipedia
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 text-center mt-12 rounded-t-3xl">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2024 Albert Einstein Tribute. All rights reserved. Content based on publicly available information.</p>
+        </div>
+    </footer>
+</body>
+</html>

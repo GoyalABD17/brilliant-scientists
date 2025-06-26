@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isaac Newton: The Architect of Classical Physics</title>
+    <!-- Tailwind CSS CDN for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter for a clean, modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles and custom animations/transitions */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5; /* Light gray background */
+            line-height: 1.6;
+            color: #333; /* Dark gray text */
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e0e0e0;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Keyframe animation for header entry */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Keyframe animation for image entry */
+        @keyframes fadeInRotate {
+            from {
+                opacity: 0;
+                transform: rotateY(90deg) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: rotateY(0deg) scale(1);
+            }
+        }
+
+        /* Keyframe animation for section content entry */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Apply header animation */
+        header h1 {
+            animation: fadeInDown 1s ease-out forwards;
+        }
+
+        /* Apply image animation */
+        #newton-image {
+            animation: fadeInRotate 1.5s ease-out forwards;
+            animation-delay: 0.5s; /* Delay image animation */
+            opacity: 0; /* Start hidden */
+        }
+
+        /* Apply section content animation */
+        section {
+            animation: slideInUp 0.8s ease-out forwards;
+            opacity: 0; /* Start hidden */
+            margin-bottom: 2rem; /* Spacing between sections */
+        }
+
+        /* Delay successive sections for a staggered effect */
+        section:nth-of-type(1) { animation-delay: 1.0s; }
+        section:nth-of-type(2) { animation-delay: 1.2s; }
+        section:nth-of-type(3) { animation-delay: 1.4s; }
+        section:nth-of-type(4) { animation-delay: 1.6s; }
+
+        /* General card styling with transitions */
+        .card {
+            background-color: #ffffff;
+            border-radius: 1rem; /* More rounded corners */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Deeper shadow */
+            padding: 2.5rem; /* More padding */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition */
+        }
+
+        /* Hover effect for cards */
+        .card:hover {
+            transform: translateY(-8px); /* Lift effect on hover */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15); /* Even deeper shadow on hover */
+        }
+
+        /* Button styling with gradient and hover effect */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            background: linear-gradient(135deg, #0f4c81 0%, #4a90e2 100%); /* Deep blue to brighter blue */
+            color: #ffffff;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out; /* Smooth transitions for all properties */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Button shadow */
+        }
+
+        /* Button hover effect */
+        .btn:hover {
+            transform: translateY(-3px); /* Slight lift */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+            background: linear-gradient(135deg, #4a90e2 0%, #0f4c81 100%); /* Reverse gradient */
+        }
+
+        /* Link hover effect */
+        a {
+            color: #0f4c81; /* Deep blue link color */
+            text-decoration: none;
+            transition: color 0.2s ease-in-out, text-decoration 0.2s ease-in-out;
+        }
+
+        a:hover {
+            color: #0d3a66; /* Darker blue on hover */
+            text-decoration: underline;
+        }
+
+        /* Responsive typography adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem; /* Smaller heading on mobile */
+            }
+            h2 {
+                font-size: 2rem; /* Smaller subheadings */
+            }
+            .card {
+                padding: 1.5rem; /* Less padding on mobile */
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.75rem;
+            }
+            .card {
+                padding: 1rem;
+                margin: 0 1rem; /* Add horizontal margin to cards */
+            }
+        }
+
+        /* Utility classes for layout using Tailwind, for example: */
+        .max-w-4xl { max-width: 80rem; } /* Customizing max width for content */
+        .mx-auto { margin-left: auto; margin-right: auto; } /* Centering content */
+        .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+    </style>
+</head>
+<body>
+    <header class="bg-gradient-to-r from-blue-700 to-indigo-900 text-white py-12 shadow-lg rounded-b-3xl">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-4 animate__animated animate__fadeInDown">
+                Sir Isaac Newton: The Architect of Classical Physics
+            </h1>
+            <p class="text-xl md:text-2xl font-light opacity-90">
+                "If I have seen further than others, it is by standing upon the shoulders of giants."
+            </p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12 md:px-8 lg:px-12">
+        <!-- Biography Section -->
+        <section class="mb-12 card opacity-0">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/3 flex justify-center">
+                    <img id="newton-image"
+                         src="https://upload.wikimedia.org/wikipedia/commons/8/83/Sir_Isaac_Newton_%281643-1727%29.jpg"
+                         alt="Sir Isaac Newton"
+                         class="w-64 h-64 rounded-full object-cover shadow-xl border-4 border-blue-400 transform transition-transform duration-300 hover:scale-105"
+                         onerror="this.onerror=null;this.src='https://placehold.co/256x256/b0c4de/333333?text=Isaac+Newton+Image';">
+                </div>
+                <div class="md:w-2/3">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2">
+                        Biography & Early Life
+                    </h2>
+                    <p class="text-lg mb-4">
+                        Born on <strong class="text-indigo-600">December 25, 1642</strong> (Old Style, or January 4, 1643, New Style), in Woolsthorpe-by-Colsterworth, Lincolnshire, England, Isaac Newton was born prematurely, just months after his father's death. His mother, Hannah Ayscough, remarried when he was three, leaving him in the care of his maternal grandmother. This early separation is believed by some to have contributed to his famously solitary and introverted personality.
+                    </p>
+                    <p class="text-lg mb-4">
+                        As a child, Newton showed little promise in farming, his family's trade, but displayed a talent for building mechanical models and drawing. He attended The King's School in Grantham, where he lived with a local apothecary. In <strong class="text-green-600">1661</strong>, he entered Trinity College, Cambridge, initially as a sizar (a student who performs duties in exchange for tuition). He graduated in 1665 without particular distinction, but his genius was soon to ignite.
+                    </p>
+                    <p class="text-lg mb-4">
+                        The Great Plague forced Cambridge University to close in <strong class="text-green-600">1665-1666</strong>, sending Newton back to his family home in Woolsthorpe. This period, often called his "Annus Mirabilis" (Miracle Years), was incredibly fertile for his intellectual development. Without external distractions, he made fundamental discoveries in calculus, optics, and the laws of motion and universal gravitation.
+                    </p>
+                    <p class="text-lg">
+                        Sir Isaac Newton <strong class="text-red-600">died on March 31, 1727</strong>, in London, England, and was buried in Westminster Abbey, becoming the first scientist to be honored in this way.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scientific Career Section -->
+        <section class="mb-12 card opacity-0">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2">
+                Groundbreaking Scientific Contributions
+            </h2>
+            <p class="text-lg mb-4">
+                Newton's work provided the foundation for classical mechanics and reshaped our understanding of the universe. His most profound achievements include:
+            </p>
+            <ul class="list-disc list-inside text-lg space-y-2 mb-4 pl-4">
+                <li>
+                    <strong>Universal Gravitation:</strong> Inspired by observations (perhaps even the apocryphal apple), Newton formulated the law of universal gravitation, stating that every particle attracts every other particle in the universe with a force proportional to the product of their masses and inversely proportional to the square of the distance between their centers. This explained planetary orbits and terrestrial gravity.
+                </li>
+                <li>
+                    <strong>Laws of Motion:</strong> He formulated the three laws of motion (inertia, $F=ma$, and action-reaction), which are central to classical mechanics and describe how objects behave under forces. These were published in his monumental work.
+                </li>
+                <li>
+                    <strong>Calculus:</strong> Independently (and controversially) co-inventing infinitesimal calculus with Gottfried Wilhelm Leibniz, Newton developed mathematical tools essential for understanding change and motion, which became a cornerstone of modern science and engineering.
+                </li>
+                <li>
+                    <strong>Optics and Light:</strong> Through experiments with prisms, Newton demonstrated that white light is composed of a spectrum of colors. He also developed the first practical reflecting telescope, which avoided chromatic aberration found in refracting telescopes.
+                </li>
+            </ul>
+            <p class="text-lg mb-4">
+                His most influential work, <strong class="text-purple-600">"Philosophiæ Naturalis Principia Mathematica"</strong> (Mathematical Principles of Natural Philosophy), published in <strong class="text-green-600">1687</strong>, laid out his laws of motion and universal gravitation, establishing the scientific method and becoming one of the most important books in the history of science. It synthesized centuries of astronomical and physical observations into a coherent system.
+            </p>
+            <p class="text-lg">
+                Newton also made significant contributions to mathematics, including the generalized binomial theorem and the use of power series. His work provided a rational, mechanistic view of the universe that dominated scientific thought for over two centuries.
+            </p>
+        </section>
+
+        <!-- Unknown Facts Section -->
+        <section class="mb-12 card opacity-0">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2">
+                Lesser-Known Facts & Quirks
+            </h2>
+            <ul class="list-disc list-inside text-lg space-y-3 pl-4">
+                <li>
+                    <strong>Devoted to Alchemy & Theology:</strong> Despite his scientific rigor, Newton spent far more time studying alchemy and biblical theology than he did on physics. He believed these pursuits were avenues to divine truth.
+                </li>
+                <li>
+                    <strong>Head of the Royal Mint:</strong> From 1696 until his death, Newton served as Warden, and later Master, of the Royal Mint. He zealously pursued counterfeiters, significantly reforming England's currency.
+                </li>
+                <li>
+                    <strong>Introverted and Secretive:</strong> Newton was notoriously private and reclusive. He often delayed publishing his work due to fear of criticism, leading to famous disputes with contemporaries like Robert Hooke and Gottfried Leibniz.
+                </li>
+                <li>
+                    <strong>Experimented on Himself:</strong> In his optics research, he once inserted a bodkin (a long, thin needle) between his eye and the bone, pressing on his eyeball "so as to make a white circle about the [eye's] bottom."
+                </li>
+                <li>
+                    <strong>The Apple Story:</strong> While the story of an apple falling on his head directly inspiring his theory of gravity is largely an anecdote, Newton himself shared variations of it, suggesting the falling apple did prompt his thoughts on universal attraction.
+                </li>
+                <li>
+                    <strong>Suffered from Nervous Breakdowns:</strong> Newton experienced at least two severe nervous breakdowns in his lifetime, possibly due to overwork, mercury poisoning from alchemy, or other factors.
+                </li>
+            </ul>
+        </section>
+
+        <!-- Legacy Section (brief) -->
+        <section class="mb-12 card opacity-0">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2">
+                Enduring Legacy
+            </h2>
+            <p class="text-lg mb-4">
+                Sir Isaac Newton's legacy is immense and foundational. His synthesis of physics, mathematics, and astronomy created a unified understanding of the physical world that stood for centuries. He established the scientific method as we know it, emphasizing observation and mathematical proof. His work remains indispensable for understanding the universe at macroscopic scales and continues to be taught as the basis of physics worldwide.
+            </p>
+            <div class="text-center mt-8">
+                <a href="https://en.wikipedia.org/wiki/Isaac_Newton" target="_blank" rel="noopener noreferrer" class="btn">
+                    Discover More on Wikipedia
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 text-center mt-12 rounded-t-3xl">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2024 Isaac Newton Tribute. All rights reserved. Content based on publicly available information.</p>
+        </div>
+    </footer>
+</body>
+</html>

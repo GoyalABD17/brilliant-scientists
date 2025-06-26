@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galileo Galilei: The Father of Modern Science</title>
+    <!-- Tailwind CSS CDN for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter for a clean, modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles and custom animations/transitions */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5; /* Light gray background */
+            line-height: 1.6;
+            color: #333; /* Dark gray text */
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e0e0e0;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Keyframe animation for header entry */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Keyframe animation for image entry */
+        @keyframes fadeInRotate {
+            from {
+                opacity: 0;
+                transform: rotateY(90deg) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: rotateY(0deg) scale(1);
+            }
+        }
+
+        /* Keyframe animation for section content entry */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Apply header animation */
+        header h1 {
+            animation: fadeInDown 1s ease-out forwards;
+        }
+
+        /* Apply image animation */
+        #galileo-image {
+            animation: fadeInRotate 1.5s ease-out forwards;
+            animation-delay: 0.5s; /* Delay image animation */
+            opacity: 0; /* Start hidden */
+        }
+
+        /* Apply section content animation */
+        section {
+            animation: slideInUp 0.8s ease-out forwards;
+            opacity: 0; /* Start hidden */
+            margin-bottom: 2rem; /* Spacing between sections */
+        }
+
+        /* Delay successive sections for a staggered effect */
+        section:nth-of-type(1) { animation-delay: 1.0s; }
+        section:nth-of-type(2) { animation-delay: 1.2s; }
+        section:nth-of-type(3) { animation-delay: 1.4s; }
+        section:nth-of-type(4) { animation-delay: 1.6s; }
+
+        /* General card styling with transitions */
+        .card {
+            background-color: #ffffff;
+            border-radius: 1rem; /* More rounded corners */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Deeper shadow */
+            padding: 2.5rem; /* More padding */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition */
+        }
+
+        /* Hover effect for cards */
+        .card:hover {
+            transform: translateY(-8px); /* Lift effect on hover */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15); /* Even deeper shadow on hover */
+        }
+
+        /* Button styling with gradient and hover effect */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            background: linear-gradient(135deg, #1A5276 0%, #2874A6 100%); /* Deep ocean blue to lighter blue */
+            color: #ffffff;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out; /* Smooth transitions for all properties */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Button shadow */
+        }
+
+        /* Button hover effect */
+        .btn:hover {
+            transform: translateY(-3px); /* Slight lift */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+            background: linear-gradient(135deg, #2874A6 0%, #1A5276 100%); /* Reverse gradient */
+        }
+
+        /* Link hover effect */
+        a {
+            color: #2874A6; /* Blue link color */
+            text-decoration: none;
+            transition: color 0.2s ease-in-out, text-decoration 0.2s ease-in-out;
+        }
+
+        a:hover {
+            color: #1A5276; /* Darker blue on hover */
+            text-decoration: underline;
+        }
+
+        /* Responsive typography adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem; /* Smaller heading on mobile */
+            }
+            h2 {
+                font-size: 2rem; /* Smaller subheadings */
+            }
+            .card {
+                padding: 1.5rem; /* Less padding on mobile */
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.75rem;
+            }
+            .card {
+                padding: 1rem;
+                margin: 0 1rem; /* Add horizontal margin to cards */
+            }
+        }
+
+        /* Utility classes for layout using Tailwind, for example: */
+        .max-w-4xl { max-width: 80rem; } /* Customizing max width for content */
+        .mx-auto { margin-left: auto; margin-right: auto; } /* Centering content */
+        .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+    </style>
+</head>
+<body>
+    <header class="bg-gradient-to-r from-blue-700 to-indigo-900 text-white py-12 shadow-lg rounded-b-3xl">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-4 animate__animated animate__fadeInDown">
+                Galileo Galilei: The Father of Modern Science
+            </h1>
+            <p class="text-xl md:text-2xl font-light opacity-90">
+                "All truths are easy to understand once they are discovered; the point is to discover them."
+            </p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12 md:px-8 lg:px-12">
+        <!-- Biography Section -->
+        <section class="mb-12 card opacity-0">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/3 flex justify-center">
+                    <img id="galileo-image"
+                         src="data:image/jpeg;base64,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"
+                         alt="Galileo Galilei"
+                         class="w-64 h-64 rounded-full object-cover shadow-xl border-4 border-teal-400 transform transition-transform duration-300 hover:scale-105"
+                         onerror="this.onerror=null;this.src='https://placehold.co/256x256/add8e6/333333?text=Galileo+Image';">
+                </div>
+                <div class="md:w-2/3">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2">
+                        Biography & Early Life
+                    </h2>
+                    <p class="text-lg mb-4">
+                        Born on <strong class="text-indigo-600">February 15, 1564</strong>, in Pisa, Duchy of Florence (modern-day Italy), Galileo Galilei was the eldest of six children to Vincenzo Galilei, a renowned lutenist, composer, and music theorist. His family was of minor nobility but not wealthy. From an early age, Galileo showed a keen intellect and a natural aptitude for various fields.
+                    </p>
+                    <p class="text-lg mb-4">
+                        He initially intended to study medicine at the University of Pisa but soon found his true calling in mathematics and natural philosophy. He was greatly influenced by Euclid and Archimedes, whose rigorous mathematical approaches he would later apply to his own scientific inquiries. He left the university without a degree due to financial difficulties but continued his studies independently.
+                    </p>
+                    <p class="text-lg mb-4">
+                        By <strong class="text-green-600">1589</strong>, he was appointed to the chair of mathematics in Pisa, where he conducted his famous experiments on falling bodies, challenging Aristotle's long-held theories on motion. His innovative approach involved methodical observation and experimentation, laying the groundwork for the scientific method.
+                    </p>
+                    <p class="text-lg">
+                        Galileo Galilei <strong class="text-red-600">died on January 8, 1642</strong>, in Arcetri, near Florence, Italy. Despite his groundbreaking work, his final years were spent under house arrest by the Roman Inquisition due to his heliocentric views.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scientific Career Section -->
+        <section class="mb-12 card opacity-0">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2">
+                Pioneering Scientific Discoveries
+            </h2>
+            <p class="text-lg mb-4">
+                Galileo's contributions spanned astronomy, physics, and the scientific method. His use of the telescope revolutionized astronomy:
+            </p>
+            <ul class="list-disc list-inside text-lg space-y-2 mb-4 pl-4">
+                <li>
+                    <strong>Improved Telescope and Astronomical Observations:</strong> Though he didn't invent the telescope, Galileo significantly improved its design and was the first to use it for systematic astronomical observation in <strong class="text-yellow-600">1609</strong>. His observations provided strong evidence for the Copernican heliocentric model.
+                </li>
+                <li>
+                    <strong>Moons of Jupiter:</strong> He discovered the four largest moons of Jupiter (Io, Europa, Ganymede, and Callisto), now known as the Galilean moons. This observation proved that not all celestial bodies orbited Earth, directly challenging the geocentric model.
+                </li>
+                <li>
+                    <strong>Phases of Venus:</strong> Galileo observed that Venus exhibits a full set of phases, similar to the Moon. This was consistent with the heliocentric model, where Venus orbits the Sun, and inconsistent with the geocentric model.
+                </li>
+                <li>
+                    <strong>Sunspots and Lunar Craters:</strong> His observations of sunspots challenged the idea of a perfect, unchanging Sun, and his mapping of the Moon's rugged surface contradicted the Aristotelian view of celestial bodies as perfectly smooth spheres.
+                </li>
+                <li>
+                    <strong>Kinematics and Falling Bodies:</strong> Through careful experiments, Galileo demonstrated that objects fall at the same rate regardless of their mass (in a vacuum), challenging Aristotle's physics and laying the groundwork for Newton's laws of motion.
+                </li>
+            </ul>
+            <p class="text-lg mb-4">
+                His advocacy for the heliocentric (Sun-centered) model of the solar system, as proposed by Copernicus, led to conflict with the Catholic Church. He was eventually tried by the Roman Inquisition, forced to recant his views, and spent the remainder of his life under house arrest.
+            </p>
+            <p class="text-lg">
+                Despite the controversies, Galileo's emphasis on observation, experimentation, and mathematical analysis cemented his legacy as a key figure in the scientific revolution and "the father of modern science."
+            </p>
+        </section>
+
+        <!-- Unknown Facts Section -->
+        <section class="mb-12 card opacity-0">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2">
+                Lesser-Known Facts & Inventions
+            </h2>
+            <ul class="list-disc list-inside text-lg space-y-3 pl-4">
+                <li>
+                    <strong>Musical Background:</strong> Coming from a family of musicians, Galileo himself was a skilled lutenist, like his father, and even taught music for a brief period.
+                </li>
+                <li>
+                    <strong>Invented the Thermoscope:</strong> Before the thermometer, Galileo invented the thermoscope, a device that showed variations in temperature, though it lacked a standardized scale.
+                </li>
+                <li>
+                    <strong>Pioneered the Pendulum Clock:</strong> He discovered the law of the pendulum's swing and, though he never built one, designed the first pendulum clock. Christiaan Huygens later built the first working model.
+                </li>
+                <li>
+                    <strong>A Talented Artist:</strong> Galileo was a highly skilled draftsman and artist. His artistic training helped him illustrate his scientific observations, particularly his detailed drawings of the Moon's surface.
+                </li>
+                <li>
+                    <strong>Blindness in Later Life:</strong> In his final years, Galileo became completely blind, a condition possibly exacerbated by his extensive use of the telescope for observing the sun.
+                </li>
+                <li>
+                    <strong>The Leaning Tower of Pisa Experiment:</strong> The famous anecdote of Galileo dropping two spheres of different masses from the Leaning Tower of Pisa to prove they fall at the same rate may be apocryphal, but he did perform similar experiments and prove the principle.
+                </li>
+            </ul>
+        </section>
+
+        <!-- Legacy Section (brief) -->
+        <section class="mb-12 card opacity-0">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2">
+                Enduring Legacy
+            </h2>
+            <p class="text-lg mb-4">
+                Galileo Galilei's legacy is immense. His insistence on observation and experimentation over pure dogma fundamentally transformed science, leading to the birth of the scientific method. His astronomical discoveries, made possible by his improved telescope, decisively shifted human understanding from an Earth-centered to a Sun-centered cosmos. Despite the personal cost, Galileo's courage in pursuing truth paved the way for modern physics and astronomy, earning him the well-deserved title of "Father of Modern Science."
+            </p>
+            <div class="text-center mt-8">
+                <a href="https://en.wikipedia.org/wiki/Galileo_Galilei" target="_blank" rel="noopener noreferrer" class="btn">
+                    Learn More on Wikipedia
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 text-center mt-12 rounded-t-3xl">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2024 Galileo Galilei Tribute. All rights reserved. Content based on publicly available information.</p>
+        </div>
+    </footer>
+</body>
+</html>
