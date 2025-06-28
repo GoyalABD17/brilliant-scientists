@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nikola Tesla: The Master of Lightning</title>
-    <!-- Tailwind CSS CDN for utility classes -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter for a clean, modern look -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         /* Base styles and custom animations/transitions */
@@ -175,122 +173,295 @@
         .mx-auto { margin-left: auto; margin-right: auto; } /* Centering content */
         .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
         .px-4 { padding-left: 1rem; padding-right: 1rem; }
+
+        /* --- NEW ADDITIONS FOR BEAUTIFICATION AND HIGHLIGHTING --- */
+
+        /* Enhanced styling for "Lesser-Known Facts" list items */
+        .fact-item {
+            padding: 1rem;
+            border-radius: 0.75rem;
+            background-color: #f8faff; /* Very light blue background for facts */
+            margin-bottom: 1rem; /* Space between facts */
+            transition: background-color 0.3s ease-in-out;
+            border: 1px solid #e0e6f0; /* Light border */
+        }
+
+        .fact-item:hover {
+            background-color: #eaf1f8; /* Slightly darker on hover */
+        }
+
+        .fact-item strong {
+            color: #4a5568; /* Darker grey for the fact title */
+            font-weight: 700; /* Make it extra bold */
+            display: block; /* Make title take its own line */
+            margin-bottom: 0.5rem;
+            font-size: 1.15em; /* Slightly larger fact title */
+        }
+
+        /* Highlighting key phrases within the facts */
+        .fact-highlight {
+            color: #8b5cf6; /* A nice purple to highlight key phrases */
+            font-weight: 600;
+        }
+
+        /* Styling for the "Main point" within quotes */
+        .quote-block {
+            border-left: 4px solid; /* Defined by inline style, keep for varied colors */
+            padding-left: 25px;
+            background-color: #ffffff; /* White background for quote blocks */
+            border-radius: 0.75rem;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Subtle shadow for each quote */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .quote-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.52);
+        }
+
+        .quote-block p strong {
+            font-size: 1.5rem; /* Larger quote text */
+            color: #2c3e50; /* Dark blue-grey for quotes */
+            display: block; /* Ensure the quote itself is on its own line */
+            margin-bottom: 0.5rem;
+        }
+
+        .quote-block .main-point-label {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #6200ea; /* A deep purple for "Main point:" */
+            font-style: normal; /* Override italic if present */
+        }
+
+        .quote-block .main-point-text {
+            font-style: italic;
+            color: #4a5568; /* Darker grey for the main point description */
+            font-weight: 500;
+            margin-left: 5px; /* Indent the text slightly */
+        }
+
+        .quote-block .explanation-text {
+            font-size: 0.9rem;
+            color: #6b7280; /* Lighter grey for explanation */
+            margin-top: 0.5rem;
+            display: block;
+        }
+
+        /* Icons for quotes - using a data attribute for content */
+        .quote-block::before {
+            content: attr(data-icon);
+            font-size: 1.8rem;
+            margin-right: 15px;
+            float: left; /* Float the icon */
+            line-height: 1; /* Align with text */
+            color: inherit; /* Inherit color from border-left */
+            opacity: 0.7;
+        }
+
+        /* --- Specific highlights for Biography & Scientific Career --- */
+        .key-date {
+            font-weight: 700;
+            color: #e91e63; /* A strong pink for dates */
+            font-size: 1.1em;
+        }
+
+        .key-achievement {
+            font-weight: 700;
+            color: #007bff; /* A vibrant blue for key achievements */
+            font-size: 1.05em;
+        }
+
+        .award-highlight {
+            font-weight: 700;
+            color: #ffc107; /* A bright yellow for awards */
+            font-size: 1.05em;
+        }
+
+        .theory-highlight {
+            font-weight: 700;
+            color: #6f42c1; /* A deep purple for major theories */
+            font-size: 1.08em;
+        }
+
+        /* List item styling for scientific career */
+        .scientific-list-item {
+            background-color: #f8faff; /* Light background for list items */
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid #007bff; /* Blue accent border */
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .scientific-list-item:hover {
+            background-color: #eaf1f8;
+        }
+        .scientific-list-item strong {
+            color: #0056b3; /* Darker blue for the title of the concept */
+        }
     </style>
 </head>
 <body>
     <header class="bg-gradient-to-r from-teal-600 to-blue-800 text-white py-12 shadow-lg rounded-b-3xl">
         <div class="container mx-auto px-4 text-center">
             <h1 class="text-5xl md:text-6xl font-extrabold mb-4 animate__animated animate__fadeInDown">
-                Nikola Tesla: The Visionary of the Electrical Age
+                Nikola Tesla: The Visionary of The Electrical Age
             </h1>
             <p class="text-xl md:text-2xl font-light opacity-90">
-                "The present is theirs; the future, for which I have really worked, is mine."
+                The Present is Theirs The Future, For Which I Have Really Worked, is Mine
             </p>
         </div>
     </header>
 
     <main class="container mx-auto px-4 py-12 md:px-8 lg:px-12">
-        <!-- Biography Section -->
         <section class="mb-12 card opacity-0">
             <div class="flex flex-col md:flex-row items-center gap-8">
                 <div class="md:w-1/3 flex justify-center">
                     <img id="tesla-image"
-                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Tesla_circa_1890.jpeg/250px-Tesla_circa_1890.jpeg"
+                         src="Nikola_Tesla.png"
                          alt="Nikola Tesla"
-                         class="w-64 h-64 rounded-full object-cover shadow-xl border-4 border-blue-300 transform transition-transform duration-300 hover:scale-105"
+                         style="cursor:pointer;"
+                        class="w-[410px] aspect-[2/3] object-hover rounded-[100px] border-8 border-indigo-300 shadow-2xl bg-gradient-to-b from-white/30 to-white/5 backdrop-blur-md transition-transform duration-300 hover:scale-105"
                          onerror="this.onerror=null;this.src='https://placehold.co/256x256/aaccff/000000?text=Nikola+Tesla+Image';">
                 </div>
                 <div class="md:w-2/3">
-                    <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2"
+                        style="text-align: center; font-size: 2.5rem; color: #2c3e50; margin-bottom: 30px;">
                         Biography & Early Life
                     </h2>
                     <p class="text-lg mb-4">
-                        Born on <strong class="text-indigo-600">July 10, 1856</strong>, in Smiljan, Austrian Empire (modern-day Croatia), Nikola Tesla would become one of history's most brilliant and eccentric inventors. His father, Milutin Tesla, was an Eastern Orthodox priest, and his mother, Đuka Mandić, was an inventor of household appliances. From his mother, Tesla inherited his inventive spirit and photographic memory.
+                        Born on <span class="key-date">July 10, 1856</span>, in Smiljan, Austrian Empire (modern-day Croatia), Nikola Tesla would become one of history's most brilliant and eccentric inventors. His father, Milutin Tesla, was an Eastern Orthodox priest, and his mother, Đuka Mandić, was an inventor of household appliances. From his mother, Tesla inherited his inventive spirit and <span class="key-achievement">photographic memory</span>.
                     </p>
                     <p class="text-lg mb-4">
-                        Tesla displayed an extraordinary mind from a young age, with a knack for mathematics and a vivid imagination. He attended the Imperial-Royal Technical College in Graz, Austria, where he studied electrical engineering. It was there that he first conceived the idea for the alternating current (AC) motor. He later studied at the University of Prague.
+                        Tesla displayed an extraordinary mind from a young age, with a knack for mathematics and a vivid imagination. He attended the Imperial-Royal Technical College in Graz, Austria, where he studied electrical engineering. It was there that he first conceived the idea for the <span class="key-achievement">alternating current (AC) motor</span>. He later studied at the University of Prague.
                     </p>
                     <p class="text-lg mb-4">
-                        After working in Budapest and Paris, where he improved electrical equipment, Tesla emigrated to the United States in <strong class="text-green-600">1884</strong>, arriving in New York City with little more than the clothes on his back and a letter of recommendation to Thomas Edison. Their initial collaboration soon turned into a fierce rivalry over the future of electrical power.
+                        After working in Budapest and Paris, where he improved electrical equipment, Tesla emigrated to the United States in <span class="key-date">1884</span>, arriving in New York City with little more than the clothes on his back and a letter of recommendation to Thomas Edison. Their initial collaboration soon turned into a fierce rivalry over the future of electrical power.
                     </p>
                     <p class="text-lg">
-                        Nikola Tesla <strong class="text-red-600">died on January 7, 1943</strong>, alone in a New York City hotel room, having lived a life dedicated to scientific discovery and invention, much of which was ahead of its time.
+                        Nikola Tesla <span class="key-date">died on January 7, 1943</span>, alone in a New York City hotel room, having lived a life dedicated to scientific discovery and invention, much of which was ahead of its time.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Scientific Career Section -->
         <section class="mb-12 card opacity-0">
-            <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2"
+                style="text-align: center; font-size: 2.5rem; color: #2c3e50; margin-bottom: 30px;">
                 Revolutionary Scientific Career
             </h2>
             <p class="text-lg mb-4">
                 Tesla's career was marked by groundbreaking inventions and visionary concepts, particularly in the field of electricity and magnetism. His most significant contributions include:
             </p>
-            <ul class="list-disc list-inside text-lg space-y-2 mb-4 pl-4">
-                <li>
-                    <strong>Alternating Current (AC) System:</strong> Tesla's development of the AC electrical system, including the induction motor and polyphase power distribution, was crucial to the "War of Currents" against Edison's direct current (DC). His system ultimately became the global standard for power transmission.
+            <ul class="list-none text-lg space-y-2 mb-4 pl-0">
+                <li class="scientific-list-item">
+                    <strong class="key-achievement">Alternating Current (AC) System:</strong> Tesla's development of the <span class="theory-highlight">AC electrical system</span>, including the induction motor and polyphase power distribution, was crucial to the "War of Currents" against Edison's direct current (DC). His system ultimately became the <span class="key-achievement">global standard for power transmission</span>.
                 </li>
-                <li>
-                    <strong>Tesla Coil:</strong> Invented in <strong class="text-yellow-600">1891</strong>, the Tesla coil is a resonant transformer circuit that produces high-voltage, low-current, high-frequency alternating-current electricity. It was used for innovative experiments in electrical lighting, phosphorescence, X-ray generation, and radio.
+                <li class="scientific-list-item">
+                    <strong class="key-achievement">Tesla Coil:</strong> Invented in <span class="key-date">1891</span>, the Tesla coil is a resonant transformer circuit that produces high-voltage, low-current, high-frequency alternating-current electricity. It was used for innovative experiments in <span class="key-achievement">electrical lighting, phosphorescence, X-ray generation, and radio</span>.
                 </li>
-                <li>
-                    <strong>Radio Technology:</strong> Though Marconi is often credited, Tesla's patents for radio communication predate Marconi's. He demonstrated wireless control of a boat in <strong class="text-purple-600">1898</strong>, proving the principles of radio.
+                <li class="scientific-list-item">
+                    <strong class="key-achievement">Radio Technology:</strong> Though Marconi is often credited, Tesla's patents for radio communication predate Marconi's. He demonstrated <span class="key-achievement">wireless control of a boat</span> in <span class="key-date">1898</span>, proving the principles of radio.
                 </li>
-                <li>
-                    <strong>Remote Control:</strong> His wirelessly controlled boat demonstration also laid the foundation for remote control technology.
+                <li class="scientific-list-item">
+                    <strong class="key-achievement">Remote Control:</strong> His wirelessly controlled boat demonstration also laid the foundation for <span class="theory-highlight">remote control technology</span>.
                 </li>
-                <li>
-                    <strong>X-rays and Radioactivity:</strong> Tesla conducted early experiments with X-rays, recognizing their potential dangers, and was aware of phenomena related to radioactivity.
+                <li class="scientific-list-item">
+                    <strong class="key-achievement">X-rays and Radioactivity:</strong> Tesla conducted early experiments with X-rays, recognizing their potential dangers, and was aware of phenomena related to radioactivity.
                 </li>
             </ul>
             <p class="text-lg mb-4">
-                Tesla dreamed of free, wireless energy for the world, leading to his ambitious but unfinished project, the Wardenclyffe Tower, designed for transatlantic wireless telephony and broadcasting. His visionary ideas often outpaced the technological capabilities and financial backing of his time.
+                Tesla dreamed of free, wireless energy for the world, leading to his ambitious but unfinished project, the <span class="key-achievement">Wardenclyffe Tower</span>, designed for transatlantic wireless telephony and broadcasting. His visionary ideas often outpaced the technological capabilities and financial backing of his time.
             </p>
             <p class="text-lg">
                 Despite facing financial difficulties and public skepticism later in his life, Tesla's work laid the essential foundation for modern electrical power systems and many wireless technologies we use today.
             </p>
         </section>
 
-        <!-- Unknown Facts Section -->
         <section class="mb-12 card opacity-0">
-            <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2"
+                style="text-align: center; font-size: 2.5rem; color: #2c3e50; margin-bottom: 30px;">
                 Lesser-Known Facts & Quirks
             </h2>
-            <ul class="list-disc list-inside text-lg space-y-3 pl-4">
-                <li>
-                    <strong>Photographic Memory & Visualization:</strong> Tesla possessed an eidetic memory, allowing him to memorize entire books and visualize complex inventions in his mind with extreme clarity, often building them without ever drawing schematics.
+            <ul class="list-none text-lg space-y-3 pl-0">
+                <li class="fact-item">
+                    <strong>Photographic Memory & Visualization:</strong> Tesla possessed an eidetic memory, allowing him to memorize entire books and visualize complex inventions in his mind with extreme clarity, often building them without ever drawing schematics. <span class="fact-highlight">He could visualize inventions perfectly without drawings.</span>
                 </li>
-                <li>
-                    <strong>Obsessive Compulsive Tendencies:</strong> He had several phobias and obsessions, including a strong aversion to pearls (which led him to send an assistant home for wearing them) and a compulsion to do things in multiples of three.
+                <li class="fact-item">
+                    <strong>Obsessive Compulsive Tendencies:</strong> He had several phobias and obsessions, including a strong aversion to pearls (which led him to send an assistant home for wearing them) and a compulsion to do things in multiples of three. <span class="fact-highlight">He had a severe aversion to pearls and a compulsion for multiples of three.</span>
                 </li>
-                <li>
-                    <strong>Fascination with Pigeons:</strong> In his later years, Tesla developed an unusual devotion to pigeons, particularly a white pigeon he claimed to love as one would a human being.
+                <li class="fact-item">
+                    <strong>Fascination with Pigeons:</strong> In his later years, Tesla developed an unusual devotion to pigeons, particularly a white pigeon he claimed to love as one would a human being. <span class="fact-highlight">He had an unusual and deep affection for pigeons.</span>
                 </li>
-                <li>
-                    <strong>Never Married:</strong> Tesla never married, believing that abstinence from sexual relations helped his scientific work, though he did believe in love.
+                <li class="fact-item">
+                    <strong>Never Married:</strong> Tesla never married, believing that abstinence from sexual relations helped his scientific work, though he did believe in love. <span class="fact-highlight">He remained unmarried, believing it aided his scientific focus.</span>
                 </li>
-                <li>
-                    <strong>"Death Ray" Rumors:</strong> Towards the end of his life, he claimed to have invented a "teleforce weapon," or "death ray," though no evidence of such a device was ever found.
+                <li class="fact-item">
+                    <strong>"Death Ray" Rumors:</strong> Towards the end of his life, he claimed to have invented a "teleforce weapon," or "death ray," though no evidence of such a device was ever found. <span class="fact-highlight">He claimed to invent a "death ray," but no evidence was found.</span>
                 </li>
-                <li>
-                    <strong>Fluency in Multiple Languages:</strong> In addition to his native Serbo-Croatian, Tesla was fluent in Czech, English, French, German, Hungarian, Italian, and Latin.
+                <li class="fact-item">
+                    <strong>Fluency in Multiple Languages:</strong> In addition to his native Serbo-Croatian, Tesla was fluent in Czech, English, French, German, Hungarian, Italian, and Latin. <span class="fact-highlight">He was fluent in at least eight languages.</span>
                 </li>
             </ul>
         </section>
 
-        <!-- Legacy Section (brief) -->
         <section class="mb-12 card opacity-0">
-            <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2">
-                Enduring Legacy
+            <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-blue-500 pb-2"
+                style="text-align: center; font-size: 2.5rem; color: #2c3e50; margin-bottom: 60px;">
+                Famous & Impactful Quotes By Nikola Tesla
             </h2>
-            <p class="text-lg mb-4">
-                Nikola Tesla's vision and inventions fundamentally shaped the modern world. His alternating current system powers our homes and industries, and his pioneering work in radio, remote control, and wireless communication paved the way for countless technologies we now take for granted. Though he faced challenges and obscurity during his lifetime, Tesla is now widely recognized as a true genius whose contributions continue to inspire innovation and wonder.
-            </p>
+
+        <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px;">
+
+            <div class="quote-block" style="border-left-color: #2980b9;" data-icon="🔮">
+            <p><strong>“The present is theirs; the future, for which I really worked, is mine.”</strong></p>
+            <p><em class="main-point-label">Main point:</em> <span class="main-point-text">Tesla saw himself building the future.</span><br>
+            <span class="explanation-text">He acknowledged that while others were recognized in the present, his inventions would benefit future generations.</span></p>
+            </div>
+
+            <div class="quote-block" style="border-left-color: #27ae60;" data-icon="⚛️">
+            <p><strong>“If you want to find the secrets of the universe, think in terms of energy, frequency, and vibration.”</strong></p>
+            <p><em class="main-point-label">Main point:</em> <span class="main-point-text">The universe is made of vibrations.</span><br>
+            <span class="explanation-text">Tesla believed the key to understanding reality lies in physics—particularly in waves and energy fields.</span></p>
+            </div>
+
+            <div class="quote-block" style="border-left-color: #d35400;" data-icon="⚖️">
+            <p><strong>“I don't care that they stole my idea… I care that they don't have any of their own.”</strong></p>
+            <p><em class="main-point-label">Main point:</em> <span class="main-point-text">True innovation matters more than credit.</span><br>
+            <span class="explanation-text">Tesla valued creativity and originality over fame or ownership.</span></p>
+            </div>
+
+            <div class="quote-block" style="border-left-color: #8e44ad;" data-icon="🧐">
+            <p><strong>“The scientists of today think deeply instead of clearly.”</strong></p>
+            <p><em class="main-point-label">Main point:</em> <span class="main-point-text">Clarity is as important as depth.</span><br>
+            <span class="explanation-text">Tesla criticized modern science for lacking simplicity and vision despite complex thinking.</span></p>
+            </div>
+
+            <div class="quote-block" style="border-left-color: #c0392b;" data-icon="🎭">
+            <p><strong>“Our virtues and our failings are inseparable, like force and matter. When they separate, man is no more.”</strong></p>
+            <p><em class="main-point-label">Main point:</em> <span class="main-point-text">Human flaws and strengths are linked.</span><br>
+            <span class="explanation-text">Tesla recognized that human nature is a blend of both good and bad, and both are essential to existence.</span></p>
+            </div>
+
+            <div class="quote-block" style="border-left-color: #16a085;" data-icon="📜">
+            <p><strong>“Let the future tell the truth, and evaluate each one according to his work and accomplishments.”</strong></p>
+            <p><em class="main-point-label">Main point:</em> <span class="main-point-text">History will judge fairly.</span><br>
+            <span class="explanation-text">Tesla believed time would reveal the true impact of his contributions.</span></p>
+            </div>
+
+            <div class="quote-block" style="border-left-color: #34495e;" data-icon="🔗">
+            <p><strong>“Though free to think and act, we are held together, like the stars in the firmament, with ties inseparable.”</strong></p>
+            <p><em class="main-point-label">Main point:</em> <span class="main-point-text">Everything in the universe is interconnected.</span><br>
+            <span class="explanation-text">Tesla believed in a unified cosmos, where all beings and matter are subtly connected.</span></p>
+            </div>
+
+        </div>
+        </section>
+
             <div class="text-center mt-8">
                 <a href="https://en.wikipedia.org/wiki/Nikola_Tesla" target="_blank" rel="noopener noreferrer" class="btn">
-                    Explore More on Wikipedia
+                    Learn More on Wikipedia About Nikola Tesla
                 </a>
             </div>
         </section>
