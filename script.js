@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     const phrases = [
       "Exploring the Brilliant Minds..",
-      "Understanding the Genius Within..",
-      "Innovators Who Changed the World.."
+      "Life, Stories and Discoveries..",
+      "Exploring History’s Smartest Minds..",
+      "Discover, Learn, Be Inspired.."
     ];
     
     const textContainer = document.getElementById("typewriter-text");
