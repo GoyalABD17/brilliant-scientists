@@ -480,6 +480,14 @@ body {
         gap: 15px;
     }
 
+    .main-header{
+        position: relative;
+    }
+
+    .logo{
+        font-size: 30px;
+    }
+
     .nav-with-search {
         flex-direction: column;
         width: 100%;
@@ -492,8 +500,8 @@ body {
     }
 
     .nav-list {
-        flex-direction: column;
-        gap: 10px;
+        flex-direction:initial;
+        gap: 1px;
         width: 100%;
         text-align: center;
     }
@@ -504,8 +512,12 @@ body {
         gap: 10px;
     }
 
-    .search-input, .search-button {
-        width: 80%; /* Adjust as needed for smaller screens */
+    .search-input {
+        width: 50%; /* Adjust as needed for smaller screens */
+    }
+
+    .search-button{
+        width: 20%;
     }
 
     .search-results {
