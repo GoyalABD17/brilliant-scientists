@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brilliant Scientists Who Changed the World</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sidebar" id="sidebar">
+  <button class="close-btn" onclick="toggleSidebar()">✕</button>
+  <h2>Menu</h2>
+  <a href="index.html">Home</a>
+  <a href="#newton">Isaac Newton</a>
+  <a href="#tesla">Nikola Tesla</a>
+  <a href="#sarabhai">Vikram Sarabhai</a>
+  <a href="World_War_II.html" target="_blank" rel="noopener noreferrer"> Explore World War II Timeline</a>
+</div>
+<!-- <button class="open-btn" onclick="toggleSidebar()">☰</button> -->
+
+<!-- Wrap the full content in a container -->
+<div id="main-container">
+
+    <header class="main-header">
+    <button class="open-btn" onclick="toggleSidebar()">☰</button>
+    <div class="container navbar">
+    <a href="#" class="logo">Minds of Genius</a>
+    <nav class="nav-with-search">
+        <div class="nav-box">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="index.html">Home</a></li> 
+            <li class="nav-item"><a href="#einstein">Albert Einstein</a></li>
+            <li class="nav-item"><a href="#bhabha">Homi J. Bhabha</a></li>
+            <li class="nav-item"><a href="#galileo">Galileo Galilei</a></li>
+        </ul>
+        </div>
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search scientists...">
+            <button id="searchButton" class="search-button"><i class="fa fa-search" style="font-size:24px"></i>
+            </button>
+            <div id="searchResults" class="search-results"></div>
+        </div>
+    </nav>
+    </div>
+
+    </header>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1 class="typewriter-container">
+                  <span id="typewriter-text"></span><span class="blinking-cursor">|</span>
+                </h1>
+
+                <p>
+                    Discover the Extraordinary Minds That Revolutionized Our Understanding of the Universe, From the <Strong>Laws of Physics</Strong> to the <strong>Mysteries of Space</strong> & the <strong> <br>Power of Innovation</strong>
+                </p>
+            </div>
+        </section>
+        <section class="scientists-grid container">
+
+            <!--                     YOU CAN ADD THE CARD BY MAKING ARTICLE                          -->
+            <!--                            ALBERT EINSTEIN CARD                                     -->
+                <article id="einstein" class="scientist-card" data-aos="zoom-in">
+                <img src="Scientist_Images/Albert_Einstein.png" 
+                     alt="Portrait of Albert Einstein" 
+                     class="scientist-image"
+                     onerror="this.onerror=null;this.src='https://placehold.co/180x180/6a057f/e6edf3?text=Einstein';">
+                <h2><big>Albert Einstein</big></h2>
+                <h3 style="color: #667eea;">Theoretical Physics</h3>
+                <div class="separator"></div>
+
+                <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; line-height: 1.6; color: #ffffff; font-weight: bolder;">
+                    The Genius Behind the Theory of Relativity, Einstein Revolutionized Our Understanding
+                    of Space, Time & Gravity.
+                </p>
+
+                <div class="key-achievements">
+                <h3>Key Achievements:</h3>
+                <ul>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Theory of Special Relativity (1905)
+                </li>
+
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Theory of General Relativity (1915)
+                </li>
+
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Nobel Prize in Physics (1921)
+                </li>
+            </ul>
+        </div>
+        <div class="fun-fact-box">
+            <p><strong>Fun Fact: </strong>His brain was removed and studied after his death, revealing unique structural features!</p>
+        </div>
+                <a href="All_Scientist_Card/einstein.html" class="read-more-button" target="_blank" rel="noopener noreferrer">Read More</a>
+            <div class="ripple-effect"></div>
+            </article>
+
+            <!--                            ISAAC NEWTON CARD                                      -->
+            <article id="newton" class="scientist-card" data-aos="zoom-in">
+            <img src="Scientist_Images/Isaac_Newton.png"
+                onerror="this.onerror=null;this.src='https://placehold.co/180x180/6a057f/e6edf3?text=Newton';"
+                alt="Portrait of Isaac Newton" class="scientist-image">
+            <h2><big>Isaac Newton</big></h2>
+            <h3 style="color: #667eea">Mathematics & Physics</h3>
+            <div class="separator"></div>
+
+            <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; line-height: 1.6; color: #ffffff; font-weight: bolder;">
+                     The Father of Classical Mechanics, Newton Formulated the Laws of Motion & Universal Gravitation.
+                </p>
+
+                <div class="key-achievements">
+                <h3>Key Achievements:</h3>
+                <ul>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Three Laws of Motion
+                </li>
+
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Law of Universal Gravitation
+                </li>
+
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Invented Calculus
+                </li>
+            </ul>
+        </div>
+        <div class="fun-fact-box">
+            <p><strong>Fun Fact: </strong>The famous apple story might be a myth, but Newton did study falling objects extensively!</p>
+        </div>
+
+            <a href="All_Scientist_Card/newton.html" class="read-more-button" target="_blank" rel="noopener noreferrer">Read More</a>
+            <div class="ripple-effect"></div>
+            </article>
+
+            <!--                            GALILEO CARD                                      -->
+            <article id="galileo" class="scientist-card" data-aos="zoom-in" data-aos-delay="400">
+            <img src="Scientist_Images/Galileo_Galilei.png"
+                onerror="this.onerror=null;this.src='https://placehold.co/180x180/8e2de2/e6edf3?text=Galileo';"
+                alt="Portrait of Galileo Galilei" class="scientist-image">
+            <h2><big>Galileo Galilei</big></h2>
+            <h3 style="color: #667eea">Astronomy & Physics</h3>
+            <div class="separator"></div>
+            <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; line-height: 1.6; color: #ffffff; font-weight: bolder;">
+                     The Father of Modern Observational Astronomy, Galileo Championed Heliocentrism & Improved the Telescope.
+                </p>
+
+                <div class="key-achievements">
+                <h3>Key Achievements:</h3>
+                <ul>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Discovered Jupiter's four largest moons
+                </li>
+
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Observed phases of Venus
+                </li>
+
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Improved telescope design
+                </li>
+            </ul>
+        </div>
+        <div class="fun-fact-box">
+            <p><strong>Fun Fact: </strong>He was placed under house arrest for supporting the idea that Earth orbits the Sun!</p>
+        </div>
+            <a href="All_Scientist_Card/galileo.html" class="read-more-button" target="_blank" rel="noopener noreferrer">Read More</a>
+            <div class="ripple-effect"></div>
+            </article>
+
+            <!--                            NIKOLA TESLA CARD                                      -->
+            <article id="tesla" class="scientist-card" data-aos="zoom-in" data-aos-delay="400">
+            <img src="Scientist_Images/Nikola_Tesla.png"
+            onerror="this.onerror=null;this.src='https://placehold.co/180x180/8e2de2/e6edf3?text=Tesla';" alt="Portrait of Nikola Tesla" class="scientist-image">
+            <h2><big>Nikola Tesla</big></h2>
+            <h3 style="color: #667eea">Electrical Engineering</h3>
+            <div class="separator"></div>
+
+            <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; line-height: 1.6; color: #ffffff; font-weight: bolder;">
+                    The Brilliant Inventor Who Developed AC electrical Systems & Made Groundbreaking Contributions to Electromagnetism.
+                </p>
+
+                <div class="key-achievements">
+                <h3>Key Achievements:</h3>
+                <ul>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    AC Induction Motor
+                </li>
+
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Wireless Power Transmission
+                </li>
+
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Tesla Coil Invention
+                </li>
+            </ul>
+        </div>
+        <div class="fun-fact-box">
+            <p><strong>Fun Fact: </strong>He claimed to have invented a "death ray" but never revealed its secrets!</p>
+        </div>
+            <a href="All_Scientist_Card/tesla.html" class="read-more-button" target="_blank" rel="noopener noreferrer">Read More</a>
+            <div class="ripple-effect"></div>
+            </article>
+
+            <!--                             VIKRAM SARABHAI CARD                                     -->
+            <article id="sarabhai" class="scientist-card" data-aos="zoom-in" data-aos-delay="400">
+                <img src="Scientist_Images/Vikram_Sarabhai.png"
+                onerror="this.onerror=null;this.src='https://placehold.co/180x180/6a057f/e6edf3?text=Sarabhai';" alt="Portrait of Vikram Sarabhai" class="scientist-image">
+                <h2><big>Vikram Sarabhai</big></h2>
+                <h3 style="color: #667eea">Space Research</h3>
+                <div class="separator"></div>
+                <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; line-height: 1.6; color: #ffffff;">
+                    The father of India's space program, Sarabhai established ISRO and pioneered space research in India.
+                </p>
+
+                <div class="key-achievements">
+                <h3>Key Achievements:</h3>
+                <ul>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Founded Indian Space Research Organisation (ISRO)
+                </li>
+
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Launched India's first satellite Aryabhata
+                </li>
+
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Established space research institutions
+                </li>
+            </ul>
+        </div>
+        <div class="fun-fact-box">
+            <p><strong>Fun Fact: </strong>He was only 28 when he established the Physical Research Laboratory in Ahmedabad!</p>
+        </div>
+                <a href="All_Scientist_Card/sarabhai.html" class="read-more-button" target="_blank" rel="noopener noreferrer">Read More</a>
+                <div class="ripple-effect"></div>
+            </article>
+
+            <!--                             HOMI J BHABA CARD                                      -->
+            <article id="bhabha" class="scientist-card" data-aos="zoom-in" data-aos-delay="400">
+                <img src="Scientist_Images/Homi_J_Bhabha.png"
+                onerror="this.onerror=null;this.src='https://placehold.co/180x180/8e2de2/e6edf3?text=Bhabha';" alt="Portrait of Homi J. Bhabha" class="scientist-image">
+                <h2><big>Homi J. Bhabha</big></h2>
+                <h3 style="color: #667eea">Nuclear Physics</h3>
+                <div class="separator"></div>
+                <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; line-height: 1.6; color: #ffffff;">
+                    The father of India's nuclear program, Bhabha established the foundation for nuclear research and atomic energy in India.
+                </p>
+
+                <div class="key-achievements">
+                <h3>Key Achievements:</h3>
+                <ul>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Founded Tata Institute of Fundamental Research (TIFR)
+                </li>
+
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Established India's nuclear program
+                </li>
+
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Pioneered cosmic ray research
+                </li>
+            </ul>
+        </div>
+        <div class="fun-fact-box">
+            <p><strong>Fun Fact: </strong>He was also an accomplished artist and classical music enthusiast!</p>
+        </div>
+                <a href="All_Scientist_Card/bhabha.html" class="read-more-button" target="_blank" rel="noopener noreferrer">Read More</a>
+                <div class="ripple-effect"></div>
+            </article>
+
+            <!--                             CARD                                      -->
+            <!--                             CARD                                      -->
+            
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Minds of Genius. All rights reserved. Designed with passion and CSS.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+
+</div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true,     // Yaha "True" Karne Par Animation Ek Baar Hi Hogi Aur "False" Karne Par Baar Baar Hoti Rahigi
+    easing: 'ease-out-back'
+  });
+</script>
+</html>

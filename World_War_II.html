@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World War II Interactive Timeline</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style>
+        /* Global Variables for easy theme management */
+        :root {
+            --primary-bg: #0d1117; /* Dark background, GitHub-like */
+            --secondary-bg: #161b22; /* Slightly lighter dark */
+            --accent-color-1: #6a057f; /* Deep violet */
+            --accent-color-2: #8e2de2; /* Lighter violet/purple */
+            --text-color-light: #e6edf3;
+            --text-color-light-1: #e74c3c;
+            --text-color-medium: #a8b3c2; /* Greyish text for details */
+            --border-color: #30363d; /* Subtle border for elements */
+            --shadow-color-dark: rgba(0, 0, 0, 0.4);
+            --shadow-color-light: rgba(142, 45, 226, 0.2); /* Soft purple shadow */
+            --card-hover-shadow: 0 10px 30px var(--shadow-color-light);
+            --gradient-1: linear-gradient(135deg, var(--accent-color-1), var(--accent-color-2));
+            --gradient-2: linear-gradient(45deg, #2c3e50, #4a6a7d); /* Blue-grey for elements */
+            --font-main: 'Inter', sans-serif;
+            --font-heading: 'Merriweather', serif;
+            --border-radius-sm: 8px;
+            --border-radius-md-1: 30px;
+            --border-radius-lg: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--primary-bg);
+            color: var(--text-color-light);
+            min-height: 100vh;
+            padding: 20px;
+            background-image: radial-gradient(circle at top left, var(--secondary-bg) 5%, transparent 30%),
+                              radial-gradient(circle at bottom right, var(--secondary-bg) 5%, transparent 30%);
+            background-size: 80% 80%;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        /* Custom scrollbar styling (Webkit) */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary-bg);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-color-1);
+            border-radius: 10px;
+            border: 2px solid var(--primary-bg);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-color-2);
+        }
+
+        /* Text selection color */
+        ::selection {
+            background-color: var(--accent-color-2);
+            color: var(--primary-bg);
+        }
+
+        /* Focus outline for accessibility */
+        :focus-visible {
+            outline: 2px solid var(--accent-color-2);
+            outline-offset: 3px;
+            border-radius: var(--border-radius-sm);
+        }
+
+        .timeline-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1; /* Ensure content is above background effects */
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #1c2f3d;
+            border-radius: var(--border-radius-lg);
+            position: relative;
+            overflow: hidden;
+            border-bottom-left-radius: var(--border-radius-lg);
+            border-bottom-right-radius: var(--border-radius-lg);
+            box-shadow: 0 4px 15px var(--shadow-color-dark);
+            animation: slideDown 1.3s ease-out forwards;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .header h1 {
+            font-family: 'Georgia', serif;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: var(--text-color-light-1);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 2;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            font-weight: bolder;
+            color: #bdc3c7;
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto 10px;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gradient-1);
+            transform: translateX(-50%);
+            box-shadow: 0 0 15px var(--shadow-color-light);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 40px 0;
+            opacity: 0; /* Handled by AOS */
+            transform: translateY(30px); /* Handled by AOS */
+        }
+
+        .timeline-item:nth-child(odd) {
+            padding-right: 50%;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            padding-left: 50%;
+            text-align: left;
+        }
+
+        .timeline-maker {
+            position: absolute;
+            left: 50%;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: var(--accent-color-2);
+            border: 4px solid var(--primary-bg);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 0 0 8px rgba(142, 45, 226, 0.2), 0 0 20px rgba(142, 45, 226, 0.5);
+        }
+
+        .timeline-maker:hover {
+            transform: translateX(-50%) scale(1.3);
+            box-shadow: 0 0 20px var(--accent-color-2);
+        }
+
+        .timeline-card {
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-lg);
+            padding: 30px;
+            margin: 0 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px); /* Keep some blur */
+            animation: fadeInScale 1s ease-out forwards;
+        }
+
+        .timeline-card::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle at center, var(--accent-color-1) 0%, transparent 60%);
+            opacity: 0.05;
+            z-index: 0;
+            pointer-events: none;
+            transition: transform 0.6s ease;
+        }
+
+        .timeline-card:hover::before {
+            transform: scale(1.1);
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 25px 40px rgba(142, 45, 226, 0.5);
+            border-color: var(--accent-color-2);
+            z-index: 5;
+        }
+
+        .timeline-card.expanded {
+            border-color: var(--accent-color-2);
+            background: var(--secondary-bg); /* Maintain consistent background */
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        /* Ensuring card content is always above the pseudo-elements and ripple */
+        .timeline-card > *:not(.ripple-effect) {
+            position: relative;
+            z-index: 1;
+        }
+
+
+        .card-date {
+            font-size: 1.1rem;
+            color: var(--accent-color-2);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .card-title {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--text-color-light);
+            font-weight: bold;
+            text-shadow: 1px 1px 3px var(--shadow-color-dark);
+        }
+
+        .card-summary {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-color-medium);
+            margin-bottom: 15px;
+        }
+
+        .card-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-out; /* Slower transition for a smoother reveal */
+        }
+
+        .card-details.expanded {
+            max-height: 500px; /* Adjust based on content height */
+        }
+
+        .card-details-content {
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 15px; /* Add margin for spacing */
+        }
+
+        .detail-section {
+            margin-bottom: 20px;
+        }
+
+        .detail-section h4 {
+            color: #0879e9;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 1.4rem;
+            font-family: var(--font-heading);
+        }
+
+        .detail-section p {
+            color: var(--text-color-medium);
+            line-height: 1.6;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .faction-tag {
+            display: inline-block;
+            padding: 8px 18px;
+            border-radius: var(--border-radius-md-1);
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 5px 5px 0 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .faction-tag:hover {
+            transform: translateY(-2px);
+        }
+
+        .axis {
+            background: #e74c3c; /* Red, distinct from theme */
+            color: white;
+        }
+
+        .allied {
+            background: #27ae60; /* Green, distinct from theme */
+            color: white;
+        }
+
+        .neutral {
+            background: #95a5a6; /* Grey, distinct from theme */
+            color: white;
+        }
+
+        .expand-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--gradient-1);
+            color: var(--text-color-light);
+            text-decoration: none;
+            border-radius: var(--border-radius-md-1);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(142, 45, 226, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            cursor: pointer;
+            border: none;
+            margin-top: 20px;
+        }
+
+        .expand-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.3s ease;
+            z-index: 0;
+        }
+
+        .expand-btn:hover::before {
+            left: 0;
+        }
+
+        .expand-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 6px 20px rgba(142, 45, 226, 0.6);
+            background: linear-gradient(135deg, #7c0792, #9b3de8);
+        }
+
+        .expand-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 5px rgba(142, 45, 226, 0.4);
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--secondary-bg);
+            padding: 10px 15px;
+            border-radius: var(--border-radius-md-1);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 10px var(--shadow-color-dark);
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+         @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                padding-left: 70px !important;
+                padding-right: 0 !important;
+                text-align: left !important;
+            }
+
+            .timeline-maker {
+                left: 30px !important;
+                transform: translateX(-50%);
+            }
+
+            .timeline-card {
+                margin: 0;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            .header p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            .timeline-card {
+                padding: 20px;
+            }
+            .expand-btn {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+        }
+
+        .timeline-card .ripple-effect {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0; left: 0;
+            border-radius: var(--border-radius-lg);
+            pointer-events: none;
+            opacity: 0;
+            background: radial-gradient(circle at center, rgba(142, 45, 226, 0.1) 0%, transparent 70%);
+            transform: scale(0);
+            transition: opacity 0.5s ease-out, transform 0.8s ease-out;
+        }
+
+        .timeline-card:hover .ripple-effect {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+    </style>
+</head>
+<body>
+
+  <!-- HEADER (only title & subtitle) -->
+  <header class="header">
+    <h1>A Global Conflict That Changed the Course of History</h1>
+    <p>1939 - 1945 | World War II Timeline</p>
+  </header>
+
+  <!-- MAIN TIMELINE SECTION -->
+  <main>
+    <div class="timeline-container">
+      <!-- Legend Section -->
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-color axis"></div>
+          <span>Axis Powers</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color allied"></div>
+          <span>Allied Powers</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color neutral"></div>
+          <span>Neutral/Other</span>
+        </div>
+      </div>
+
+        <!-- Timeline Content -->
+        <div id="timeline" class="timeline">
+          <div class="timeline-item" data-aos="zoom-in">
+                <div class="timeline-maker"></div>
+                <div class="timeline-card" onclick="toggleCard(this)">
+                    <div class="card-date">September 1, 1939</div>
+                    <div class="card-title">Invasion of Poland</div>
+                    <div class="card-summary">Germany invades Poland, marking the official beginning of World War II in Europe.</div>
+                    <div class="faction-tag axis">Germany</div>
+                    <div class="faction-tag allied">Poland</div>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="card-details">
+                        <div class="card-details-content">
+                            <div class="detail-section">
+                                <h4>Military Strategy</h4>
+                                <p>Germany employed "Blitzkrieg" (lightning war) tactics, combining rapid tank advances with air support to overwhelm Polish defenses within weeks.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>Political Impact</h4>
+                                <p>Britain and France declared war on Germany on September 3, 1939, honoring their guarantee to Poland and officially beginning the European theater of WWII.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>Human Cost</h4>
+                                <p>Over 200,000 Polish casualties and the beginning of brutal occupation policies that would devastate the Polish population throughout the war.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ripple-effect"></div>
+                </div>
+            </div>
+
+            <!--                                      Timeline 2                                                -->
+            <div class="timeline-item" data-aos="zoom-in" data-aos-delay="400">
+                <div class="timeline-maker"></div>
+                <div class="timeline-card" onclick="toggleCard(this)">
+                    <div class="card-date">July 10 - October 31, 1940</div>
+                    <div class="card-title">Battle of Britain</div>
+                    <div class="card-summary">The Royal Air Force defends Britain against large-scale German air attacks.</div>
+                    <div class="faction-tag axis">Germany</div>
+                    <div class="faction-tag allied">Britain</div>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="card-details">
+                        <div class="card-details-content">
+                            <div class="detail-section">
+                                <h4>Air Warfare Innovation</h4>
+                                <p>First major military campaign fought entirely by air forces. British radar technology and Spitfire/Hurricane fighters proved crucial in defense.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>Strategic Significance</h4>
+                                <p>German failure to achieve air superiority prevented Operation Sea Lion (invasion of Britain) and marked Hitler's first major defeat.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>Civilian Impact</h4>
+                                <p>The Blitz killed over 40,000 British civilians but strengthened resolve. Churchill's leadership and "finest hour" speech became legendary.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ripple-effect"></div>
+                </div>
+            </div>
+
+            <!--                                      Timeline 3                                                -->
+            <div class="timeline-item" data-aos="zoom-in" data-aos-delay="400">
+                <div class="timeline-maker"></div>
+                <div class="timeline-card" onclick="toggleCard(this)">
+                    <div class="card-date">June 22, 1941</div>
+                    <div class="card-title">Operation Barbarossa</div>
+                    <div class="card-summary">Germany launches the largest military invasion in history against the Soviet Union.</div>
+                    <div class="faction-tag axis">Germany</div>
+                    <div class="faction-tag allied">Soviet Union</div>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="card-details">
+                        <div class="card-details-content">
+                            <div class="detail-section">
+                                <h4>Scale of Invasion</h4>
+                                <p>3.8 million Axis troops along an 1,800-mile front, the largest military operation in human history, initially achieving stunning successes.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>Strategic Miscalculation</h4>
+                                <p>Hitler's two-front war proved disastrous. Soviet resistance, harsh winter, and extended supply lines led to German defeat at Moscow.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>Human Tragedy</h4>
+                                <p>Brutal warfare with no regard for Geneva Conventions. Millions of Soviet POWs died in German captivity; civilian populations faced starvation and execution.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ripple-effect"></div>
+                </div>
+            </div>
+
+            <!--                                      Timeline 4                                                -->
+            <div class="timeline-item" data-aos="zoom-in" data-aos-delay="400">
+                <div class="timeline-maker"></div>
+                <div class="timeline-card" onclick="toggleCard(this)">
+                    <div class="card-date">December 7, 1941</div>
+                    <div class="card-title">Pearl Harbor Attack</div>
+                    <div class="card-summary">Japan's surprise attack on Pearl Harbor brings the United States into World War II.</div>
+                    <div class="faction-tag axis">Japan</div>
+                    <div class="faction-tag allied">United States</div>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="card-details">
+                        <div class="card-details-content">
+                            <div class="detail-section">
+                                <h4>Surprise Attack</h4>
+                                <p>353 Japanese aircraft attacked the US Pacific Fleet, sinking 4 battleships and damaging 4 others, along with numerous smaller vessels and aircraft.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>American Entry</h4>
+                                <p>Roosevelt's "Day of Infamy" speech led to US declaration of war. American industrial might would prove decisive in Allied victory.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>Pacific Theater Opens</h4>
+                                <p>2,400 Americans killed, but US aircraft carriers were at sea and survived. This preserved American naval aviation for the Pacific campaign.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ripple-effect"></div>
+                </div>
+            </div>
+
+            <!--                                      Timeline 5                                                -->
+            <div class="timeline-item" data-aos="zoom-in" data-aos-delay="400">
+                <div class="timeline-maker"></div>
+                <div class="timeline-card" onclick="toggleCard(this)">
+                    <div class="card-date">August 23, 1942 - February 2, 1943</div>
+                    <div class="card-title">Battle of Stalingrad</div>
+                    <div class="card-summary">The turning point of the war in Europe as Soviet forces encircle and destroy the German 6th Army.</div>
+                    <div class="faction-tag axis">Germany</div>
+                    <div class="faction-tag allied">Soviet Union</div>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="card-details">
+                        <div class="card-details-content">
+                            <div class="detail-section">
+                                <h4>Urban Warfare</h4>
+                                <p>Brutal house-to-house fighting in the ruined city. Soviet defenders held key positions while German forces became trapped in urban combat.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>Strategic Turning Point</h4>
+                                <p>Operation Uranus encircled 250,000 German troops. Hitler's refusal to allow retreat led to the destruction of an entire army.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>Massive Casualties</h4>
+                                <p>Over 2 million total casualties. German defeat marked the beginning of their long retreat from Soviet territory.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ripple-effect"></div>
+                </div>
+            </div>
+
+            <!--                                      Timeline 6                                                -->
+            <div class="timeline-item" data-aos="zoom-in" data-aos-delay="400">
+                <div class="timeline-maker"></div>
+                <div class="timeline-card" onclick="toggleCard(this)">
+                    <div class="card-date">June 6, 1944</div>
+                    <div class="card-title">D-Day: Operation Overlord</div>
+                    <div class="card-summary">Allied forces launch the largest seaborne invasion in history, opening the Western Front in Europe.</div>
+                    <div class="faction-tag axis">Germany</div>
+                    <div class="faction-tag allied">USA, Britain, Canada</div>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="card-details">
+                        <div class="card-details-content">
+                            <div class="detail-section">
+                                <h4>Massive Operation</h4>
+                                <p>156,000 Allied troops landed on five Normandy beaches. Months of planning, deception operations, and coordination made success possible.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>Strategic Breakthrough</h4>
+                                <p>Established the long-awaited second front in Western Europe, forcing Germany to fight on multiple fronts and accelerating their defeat.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>Allied Cooperation</h4>
+                                <p>Demonstrated unprecedented cooperation between American, British, and Canadian forces under unified command structure.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ripple-effect"></div>
+                </div>
+            </div>
+
+            <!--                                      Timeline 7                                                -->
+            <div class="timeline-item" data-aos="zoom-in" data-aos-delay="400">
+                <div class="timeline-maker"></div>
+                <div class="timeline-card" onclick="toggleCard(this)">
+                    <div class="card-date">August 6 & 9, 1945</div>
+                    <div class="card-title">Hiroshima & Nagasaki</div>
+                    <div class="card-summary">The United States drops atomic bombs on Japan, leading to Japan's surrender and the end of World War II.</div>
+                    <div class="faction-tag axis">Japan</div>
+                    <div class="faction-tag allied">United States</div>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="card-details">
+                        <div class="card-details-content">
+                            <div class="detail-section">
+                                <h4>Nuclear Age Begins</h4>
+                                <p>"Little Boy" and "Fat Man" demonstrated the devastating power of atomic weapons, instantly killing over 200,000 people and changing warfare forever.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>War's End</h4>
+                                <p>Emperor Hirohito announced Japan's surrender on August 15, 1945, citing the "new and most cruel bomb" as making continued resistance impossible.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>Lasting Impact</h4>
+                                <p>Began the nuclear age and Cold War tensions. Debate continues over whether the bombings were necessary to end the war.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ripple-effect"></div>
+                </div>
+            </div>
+
+            <!--                                      Timeline 8                                                -->
+            <div class="timeline-item" data-aos="zoom-in" data-aos-delay="400">
+                <div class="timeline-maker"></div>
+                <div class="timeline-card" onclick="toggleCard(this)">
+                    <div class="card-date">September 2, 1945</div>
+                    <div class="card-title">Japan Surrenders</div>
+                    <div class="card-summary">Formal surrender ceremony aboard USS Missouri in Tokyo Bay officially ends World War II.</div>
+                    <div class="faction-tag axis">Japan</div>
+                    <div class="faction-tag allied">Allied Powers</div>
+                    <button class="expand-btn">Learn More</button>
+                    <div class="card-details">
+                        <div class="card-details-content">
+                            <div class="detail-section">
+                                <h4>Formal Ceremony</h4>
+                                <p>General MacArthur accepted Japan's surrender aboard the USS Missouri, with representatives from all major Allied nations present.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>War's End</h4>
+                                <p>After six years of global conflict, World War II officially ended. The most devastating war in human history claimed 70-85 million lives.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>New World Order</h4>
+                                <p>The war's end marked the beginning of the Cold War era, with the US and Soviet Union emerging as superpowers.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ripple-effect"></div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+    <footer style="max-width: 2385px; margin-top: 30px;">
+        <div style="background-color: #161b22; color: #a8b3c2; text-align: center; padding: 30px 0px; border-top: 1px solid #30363d; font-size: 1em; border-radius: 20px;">
+          <p>&copy; 2025 WWII Interactive Timeline. Designed with passion and CSS.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleCard(card) {
+            const details = card.querySelector('.card-details');
+            const btn = card.querySelector('.expand-btn');
+
+            if (details.classList.contains('expanded')) {
+                details.classList.remove('expanded');
+                card.classList.remove('expanded');
+                btn.textContent = 'Learn More';
+            } else {
+                // Close all other expanded cards
+                document.querySelectorAll('.card-details.expanded').forEach(detail => {
+                    detail.classList.remove('expanded');
+                    detail.parentElement.classList.remove('expanded');
+                    detail.parentElement.querySelector('.expand-btn').textContent = 'Learn More';
+                });
+
+                details.classList.add('expanded');
+                card.classList.add('expanded');
+                btn.textContent = 'Show Less';
+
+                // Smooth scroll to the expanded card
+                setTimeout(() => {
+                    card.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }, 100);
+            }
+        }
+
+        // Add hover effects to timeline makers
+        document.querySelectorAll('.timeline-maker').forEach(maker => {
+            maker.addEventListener('click', function() {
+                const card = this.parentElement.querySelector('.timeline-card');
+                toggleCard(card);
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1000,
+        once: true,
+        easing: 'ease-out-back',
+        delay: 1600
+      });
+    </script>
+
+</body>
+</html>

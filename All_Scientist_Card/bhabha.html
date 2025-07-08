@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homi J. Bhabha: The Architect of India's Nuclear Program</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles and custom animations/transitions */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5; /* Light gray background */
+            line-height: 1.6;
+            color: #333; /* Dark gray text */
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e0e0e0;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Keyframe animation for header entry */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Keyframe animation for image entry */
+        @keyframes fadeInRotate {
+            from {
+                opacity: 0;
+                transform: rotateY(90deg) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: rotateY(0deg) scale(1);
+            }
+        }
+
+        /* Keyframe animation for section content entry */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Apply header animation */
+        header h1 {
+            animation: fadeInDown 1s ease-out forwards;
+        }
+
+        /* Apply image animation */
+        #bhabha-image {
+            animation: fadeInRotate 1.5s ease-out forwards;
+            animation-delay: 0.5s; /* Delay image animation */
+            opacity: 0; /* Start hidden */
+        }
+
+        /* Apply section content animation */
+        section {
+            animation: slideInUp 0.8s ease-out forwards;
+            opacity: 0; /* Start hidden */
+            margin-bottom: 2rem; /* Spacing between sections */
+        }
+
+        /* Delay successive sections for a staggered effect */
+        section:nth-of-type(1) { animation-delay: 1.0s; }
+        section:nth-of-type(2) { animation-delay: 1.2s; }
+        section:nth-of-type(3) { animation-delay: 1.4s; }
+        section:nth-of-type(4) { animation-delay: 1.6s; }
+
+        /* General card styling with transitions */
+        .card {
+            background-color: #ffffff;
+            border-radius: 1rem; /* More rounded corners */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Deeper shadow */
+            padding: 2.5rem; /* More padding */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition */
+        }
+
+        /* Hover effect for cards */
+        .card:hover {
+            transform: translateY(-8px); /* Lift effect on hover */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15); /* Even deeper shadow on hover */
+        }
+
+        /* Button styling with gradient and hover effect */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            background: linear-gradient(135deg, #22C55E 0%, #115E59 100%); /* green-dark_green gradient */
+            color: #ffffff;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out; /* Smooth transitions for all properties */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Button shadow */
+        }
+
+        /* Button hover effect */
+        .btn:hover {
+            transform: translateY(-8px); /* Slight lift */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+            background: linear-gradient(135deg, #115E59 0%, #22C55E 100%); /* Reverse gradient */
+        }
+
+        /* Link hover effect */
+        a {
+            color: #4a90e2; /* Blue link color */
+            text-decoration: none;
+            transition: color 0.2s ease-in-out, text-decoration 0.2s ease-in-out;
+        }
+
+        a:hover {
+            color: #357bd8; /* Darker blue on hover */
+            text-decoration: underline;
+        }
+
+        /* Responsive typography adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem; /* Smaller heading on mobile */
+            }
+            h2 {
+                font-size: 2rem; /* Smaller subheadings */
+            }
+            .card {
+                padding: 1.5rem; /* Less padding on mobile */
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.75rem;
+            }
+            .card {
+                padding: 1rem;
+                margin: 0 1rem; /* Add horizontal margin to cards */
+            }
+        }
+
+        /* Utility classes for layout using Tailwind, for example: */
+        .max-w-4xl { max-width: 80rem; } /* Customizing max width for content */
+        .mx-auto { margin-left: auto; margin-right: auto; } /* Centering content */
+        .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+
+        /* --- NEW ADDITIONS FOR BEAUTIFICATION AND HIGHLIGHTING --- */
+
+        /* Enhanced styling for "Lesser-Known Facts" list items */
+        .fact-item {
+            padding: 1rem;
+            border-radius: 0.75rem;
+            background-color: #f8faff; /* Very light blue background for facts */
+            margin-bottom: 1rem; /* Space between facts */
+            transition: background-color 0.3s ease-in-out;
+            border: 1px solid #e0e6f0; /* Light border */
+        }
+
+        .fact-item:hover {
+            background-color: #eaf1f8; /* Slightly darker on hover */
+        }
+
+        .fact-item strong {
+            color: #4a5568; /* Darker grey for the fact title */
+            font-weight: 700; /* Make it extra bold */
+            display: block; /* Make title take its own line */
+            margin-bottom: 0.5rem;
+            font-size: 1.15em; /* Slightly larger fact title */
+        }
+
+        /* Highlighting key phrases within the facts */
+        .fact-highlight {
+            color: #8b5cf6; /* A nice purple to highlight key phrases */
+            font-weight: 600;
+        }
+
+        /* Styling for the "Main point" within quotes */
+        .quote-block {
+            border-left: 4px solid; /* Defined by inline style, keep for varied colors */
+            padding-left: 25px;
+            background-color: #ffffff; /* White background for quote blocks */
+            border-radius: 0.75rem;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Subtle shadow for each quote */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .quote-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.52);
+        }
+
+        .quote-block p strong {
+            font-size: 1.5rem; /* Larger quote text */
+            color: #2c3e50; /* Dark blue-grey for quotes */
+            display: block; /* Ensure the quote itself is on its own line */
+            margin-bottom: 0.5rem;
+        }
+
+        .quote-block .main-point-label {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #6200ea; /* A deep purple for "Main point:" */
+            font-style: normal; /* Override italic if present */
+        }
+
+        .quote-block .main-point-text {
+            font-style: italic;
+            color: #4a5568; /* Darker grey for the main point description */
+            font-weight: 500;
+            margin-left: 5px; /* Indent the text slightly */
+        }
+
+        .quote-block .explanation-text {
+            font-size: 0.9rem;
+            color: #6b7280; /* Lighter grey for explanation */
+            margin-top: 0.5rem;
+            display: block;
+        }
+
+        /* Icons for quotes - using a data attribute for content */
+        .quote-block::before {
+            content: attr(data-icon);
+            font-size: 1.8rem;
+            margin-right: 15px;
+            float: left; /* Float the icon */
+            line-height: 1; /* Align with text */
+            color: inherit; /* Inherit color from border-left */
+            opacity: 0.7;
+        }
+
+        /* --- Specific highlights for Biography & Scientific Career --- */
+        .key-date {
+            font-weight: 700;
+            color: #e91e63; /* A strong pink for dates */
+            font-size: 1.1em;
+        }
+
+        .key-achievement {
+            font-weight: 700;
+            color: #007bff; /* A vibrant blue for key achievements */
+            font-size: 1.05em;
+        }
+
+        .award-highlight {
+            font-weight: 700;
+            color: #ffc107; /* A bright yellow for awards */
+            font-size: 1.05em;
+        }
+
+        .theory-highlight {
+            font-weight: 700;
+            color: #6f42c1; /* A deep purple for major theories */
+            font-size: 1.08em;
+        }
+
+        /* List item styling for scientific career */
+        .scientific-list-item {
+            background-color: #f8faff; /* Light background for list items */
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid #007bff; /* Blue accent border */
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .scientific-list-item:hover {
+            background-color: #eaf1f8;
+        }
+        .scientific-list-item strong {
+            color: #0056b3; /* Darker blue for the title of the concept */
+        }
+
+    </style>
+</head>
+<body>
+    <header class="bg-gradient-to-r from-green-600 to-teal-800 text-white py-12 shadow-lg rounded-b-3xl">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-4 animate__animated animate__fadeInDown">
+                Homi J. Bhabha <br> The Architect of India's Nuclear Program
+            </h1>
+            <p class="text-xl md:text-2xl font-light opacity-90">
+                <strong style="color: #e6fffa">Physics is My Line. I know I shall Do Great Things Here.</strong><br> A Visionary Who Laid the Foundation For India's Self-reliance in Nuclear Science & Technology.
+            </p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12 md:px-8 lg:px-12">
+        <section class="mb-12 card opacity-0">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/3 flex justify-center">
+                    <img id="bhabha-image"
+                         src="../Scientist_Images/Homi_J_Bhabha.png"
+                         alt="Homi J. Bhabha"
+                         style="cursor:pointer;"
+                         class="w-[410px] aspect-[1024/1536] object-hover rounded-[100px] border-8 border-green-500 shadow-2xl bg-gradient-to-b from-white/30 to-white/5 backdrop-blur-md transition-transform duration-300 hover:scale-105"
+                         onerror="this.onerror=null;this.src='https://placehold.co/256x256/4CAF50/ffffff?text=Homi+J.+Bhabha+Image';">
+                </div>
+                <div class="md:w-2/3">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-green-500 pb-2"
+                        style="text-align: center; font-size: 2.5rem; color: #2c3e50; margin-bottom: 30px;">
+                        Biography & Early Life
+                    </h2>
+                    <p class="text-lg mb-4">
+                        Born on <span class="key-date">October 30, 1909</span>, in Bombay (now Mumbai), India, Homi Jehangir Bhabha was a brilliant physicist who spearheaded India's nuclear program. His parents were Jehangir Hormusji Bhabha, a well-known lawyer, and Meherbai Framji Panday.
+                    </p>
+                    <p class="text-lg mb-4">
+                        Bhabha received his early education at the Cathedral and John Connon School in Mumbai. He later attended Elphinstone College and the Royal Institute of Science in Bombay before moving to England in <span class="key-date">1927</span> to study mechanical engineering at Gonville and Caius College, Cambridge, as per his family's wishes.
+                    </p>
+                    <p class="text-lg mb-4">
+                        However, his true passion lay in physics. He famously wrote to his father, <span class="key-achievement">"Physics is my line. I know I shall do great things here."</span> He switched to theoretical physics and mathematics, earning his PhD in nuclear physics in <span class="key-date">1935</span> from Cambridge, supervised by R.H. Fowler.
+                    </p>
+                    <p class="text-lg">
+                        Homi J. Bhabha <span class="key-date">died on January 24, 1966</span>, in a plane crash near Mont Blanc, France, leaving an indelible mark on India's scientific landscape.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12 card opacity-0">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-green-500 pb-2"
+                style="text-align: center; font-size: 2.5rem; color: #2c3e50; margin-bottom: 30px;">
+                Pioneering Scientific Contributions
+            </h2>
+            <p class="text-lg mb-4">
+                Bhabha's scientific career was marked by significant contributions to cosmic ray physics and nuclear physics. His most notable works include:
+            </p>
+            <ul class="list-none text-lg space-y-2 mb-4 pl-0">
+                <li class="scientific-list-item">
+                    <strong class="key-achievement">Bhabha Scattering:</strong> In <span class="key-date">1935</span>, he published a paper describing the cross-section of electron-positron scattering, a phenomenon now known as "Bhabha scattering," which is crucial for calibrating particle beams in high-energy accelerators.
+                </li>
+                <li class="scientific-list-item">
+                    <strong class="key-achievement">Bhabha-Heitler Cascade Theory:</strong> Collaborating with Walter Heitler in <span class="key-date">1937</span>, he developed the cascade theory of electron showers, explaining how primary cosmic rays interact with the Earth's atmosphere to produce showers of particles.
+                </li>
+                <li class="scientific-list-item">
+                    <strong class="key-achievement">Meson Theory:</strong> Bhabha was an early and influential worker on meson theory, even coining the term "meson" for the particle of intermediate mass discovered in cosmic radiation. He also provided a clear explanation for the relativistic time dilation effects on meson lifetimes.
+                </li>
+                <li class="scientific-list-item">
+                    <strong class="key-achievement">Father of Indian Nuclear Program:</strong> He is widely regarded as the <span class="theory-highlight">"Father of the Indian Nuclear Program."</span> He envisioned and laid the groundwork for India's self-reliant nuclear energy program, focusing on utilizing the country's vast thorium reserves through a three-stage nuclear power program.
+                </li>
+            </ul>
+            <p class="text-lg mb-4">
+                Upon his return to India in <span class="key-date">1939</span>, due to the outbreak of World War II, Bhabha joined the Indian Institute of Science in Bangalore. He soon realized the need for a dedicated research institution for fundamental physics in India.
+            </p>
+            <p class="text-lg">
+                In <span class="key-date">1945</span>, he founded the <span class="key-achievement">Tata Institute of Fundamental Research (TIFR)</span> in Mumbai, which became the cradle of India's nuclear program. He also established the <span class="key-date">Atomic Energy Commission (AEC) in 1948</span> and the <span class="key-date">Atomic Energy Establishment, Trombay (AEET) in 1954</span>, which was later renamed the Bhabha Atomic Research Centre (BARC) in his honor. He presided over the first United Nations Conference on the Peaceful Uses of Atomic Energy in <span class="key-date">1955</span>.
+            </p>
+        </section>
+
+        <section class="mb-12 card opacity-0">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-green-500 pb-2"
+            style="text-align: center; font-size: 2.5rem; color: #2c3e50; margin-bottom: 30px;">
+                Lesser-Known Facts
+            </h2>
+            <ul class="list-none text-lg space-y-3 pl-0">
+                <li class="fact-item">
+                    <strong>A lover of arts:</strong> Beyond science, Bhabha had a deep appreciation for classical music, painting, and gardening. He played the violin and piano and was an accomplished painter, even winning an award at the Bombay Art Society's exhibition at 17. <span class="fact-highlight">He was a polymath with a keen interest in music and art.</span>
+                </li>
+                <li class="fact-item">
+                    <strong>His family encouraged his scientific pursuits:</strong> Although initially pushed towards engineering, his father, Jehangir Hormusji Bhabha, supported his shift to physics after seeing his strong passion and conviction. <span class="fact-highlight">His family eventually supported his passion for physics.</span>
+                </li>
+                <li class="fact-item">
+                    <strong>He foresaw India's nuclear future:</strong> Even before India's independence, Bhabha recognized the critical role atomic energy would play in the nation's development and actively lobbied for its indigenous development. <span class="fact-highlight">He envisioned India as a nuclear power early on.</span>
+                </li>
+                <li class="fact-item">
+                    <strong>He was nominated for the Nobel Prize:</strong> Bhabha was nominated for the Nobel Prize in Physics multiple times between 1951 and 1956 for his work on cosmic rays and elementary particles. <span class="fact-highlight">He received multiple Nobel Prize nominations.</span>
+                </li>
+                <li class="fact-item">
+                    <strong>Instrumental in India's space program:</strong> While primarily known for nuclear energy, Bhabha also played a crucial role in the nascent stages of India's space program, with the Department of Atomic Energy initially overseeing space research. <span class="fact-highlight">He contributed to the early development of India's space program.</span>
+                </li>
+                <li class="fact-item">
+                    <strong>His death remains a mystery:</strong> He died in a plane crash in 1966, which has led to various conspiracy theories, though officially it was attributed to an error by the pilot. <span class="fact-highlight">His untimely death is surrounded by conspiracy theories.</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="mb-12 card opacity-0">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6 border-b-4 border-green-500 pb-2"
+                style="text-align: center; font-size: 2.5rem; color: #2c3e50; margin-bottom: 60px;">
+                Impactful Thoughts & Quotes By Homi J. Bhabha
+            </h2>
+
+            <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px;">
+
+                <div class="quote-block" style="border-left-color: #28a745;" data-icon="⚛️">
+                    <p><strong>“There is no power on Earth that can stop us from developing nuclear energy for peaceful purposes.”</strong></p>
+                    <p><em class="main-point-label">Main point:</em> <span class="main-point-text">Unyielding commitment to nuclear progress.</span><br>
+                    <span class="explanation-text">Bhabha's firm belief in India's right and ability to harness nuclear energy for development.</span></p>
+                </div>
+
+                <div class="quote-block" style="border-left-color: #17a2b8;" data-icon="🔬">
+                    <p><strong>“A scientific institution, be it a laboratory or an academy, has to be grown with great care like a tree.”</strong></p>
+                    <p><em class="main-point-label">Main point:</em> <span class="main-point-text">Nurturing scientific institutions.</span><br>
+                    <span class="explanation-text">Emphasizing the need for careful development and sustained support for scientific growth.</span></p>
+                </div>
+
+                <div class="quote-block" style="border-left-color: #fd7e14;" data-icon="💡">
+                    <p><strong>“My success will not depend on what A or B thinks of me. My success will be what I make of my work.”</strong></p>
+                    <p><em class="main-point-label">Main point:</em> <span class="main-point-text">Self-reliance and internal motivation.</span><br>
+                    <span class="explanation-text">A reflection of his independent spirit and focus on the quality of his own contributions.</span></p>
+                </div>
+
+                <div class="quote-block" style="border-left-color: #6f42c1;" data-icon="📚">
+                    <p><strong>“Physics is my line. I know I shall do great things here. For, each man can do best and excel in only that thing of which he is passionately fond.”</strong></p>
+                    <p><em class="main-point-label">Main point:</em> <span class="main-point-text">Passion drives excellence.</span><br>
+                    <span class="explanation-text">His conviction that one excels when pursuing what they are truly passionate about.</span></p>
+                </div>
+
+                <div class="quote-block" style="border-left-color: #dc3545;" data-icon="🌍">
+                    <p><strong>“The acquisition of knowledge is not an end in itself, but a means to an end.”</strong></p>
+                    <p><em class="main-point-label">Main point:</em> <span class="main-point-text">Knowledge as a tool for progress.</span><br>
+                    <span class="explanation-text">Highlighting the practical application and purpose of scientific knowledge for societal benefit.</span></p>
+                </div>
+
+                <div class="quote-block" style="border-left-color: #20c997;" data-icon="🌟">
+                    <p><strong>“I have no desire to be a 'successful' man or the head of a big firm. There are intelligent people who like that and let them do it.”</strong></p>
+                    <p><em class="main-point-label">Main point:</em> <span class="main-point-text">Prioritizing purpose over conventional success.</span><br>
+                    <span class="explanation-text">His dedication to scientific pursuit rather than corporate or material success.</span></p>
+                </div>
+
+            </div>
+            </section>
+
+            <div class="text-center mt-8">
+                <a href="https://en.wikipedia.org/wiki/Homi_J._Bhabha" target="_blank" rel="noopener noreferrer" class="btn">
+                    Learn More on Wikipedia About Homi J. Bhabha
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 text-center mt-12 rounded-t-3xl">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2024 Homi J. Bhabha Tribute. All rights reserved. Content based on publicly available information.</p>
+        </div>
+    </footer>
+</body>
+</html>
