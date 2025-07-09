@@ -777,6 +777,7 @@ body {
             align-items: center;
             font-size: 1.0em;           /*text ka size hai*/
             color: #ffffff;           /*text ka color hai*/
+            margin-left: -40px;
         }
 
         .key-achievements li svg {
